@@ -5,12 +5,12 @@ import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
-import { RecipeEditComponent } from './recipe-edit.component';
 import { TopnavComponent } from '../topnav/topnav.component';
+import { RecipeAddComponent } from './recipe-add.component';
 
-describe('RecipeEditComponent', () => {
-  let component: RecipeEditComponent;
-  let fixture: ComponentFixture<RecipeEditComponent>;
+describe('RecipeAddComponent', () => {
+  let component: RecipeAddComponent;
+  let fixture: ComponentFixture<RecipeAddComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,7 +19,7 @@ describe('RecipeEditComponent', () => {
         FormsModule
       ],
       declarations: [
-        RecipeEditComponent,
+        RecipeAddComponent,
         TopnavComponent,
       ]
     })
@@ -27,7 +27,7 @@ describe('RecipeEditComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecipeEditComponent);
+    fixture = TestBed.createComponent(RecipeAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

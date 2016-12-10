@@ -1,0 +1,40 @@
+<rec-topnav></rec-topnav>
+
+
+<div class="recipe-container">
+  <md-input placeholder="Recipe Title" [(ngModel)]="recipe.title"></md-input>
+  <div class="spacer"></div>
+
+  <md-input placeholder="Image URL" [(ngModel)]="recipe.image"></md-input>
+  <img src="{{recipe.image}}">
+  <div class="spacer"></div>
+
+  <md-input placeholder="Yield" [(ngModel)]="recipe.yield"></md-input>
+  <md-input placeholder="Time" [(ngModel)]="recipe.time"></md-input>
+  <div class="spacer"></div>
+
+  <div class="section-header">
+    <h3>Ingredients</h3>
+    <div class="fill-remaining-space"></div>
+    <button md-mini-fab (click)="recipe.ingredients.push('')">
+            <md-icon>add</md-icon>
+        </button>
+  </div>
+  <md-input *ngFor="let ing of recipe.ingredients; let i=index" placeholder="Ingredient" [(ngModel)]="recipe.ingredients[i]"></md-input>
+  <div class="spacer"></div>
+
+  <div class="section-header">
+    <h3>Instructions</h3>
+    <div class="fill-remaining-space"></div>
+    <button md-mini-fab (click)="recipe.steps.push('')">
+            <md-icon>add</md-icon>
+        </button>
+  </div>
+  <md-textarea *ngFor="let s of recipe.steps; let i=index" placeholder="Step" [(ngModel)]="recipe.steps[i]"></md-textarea>
+  <div class="spacer"></div>
+
+  <div class="btn-group">
+    <button class="save-btn" md-raised-button color="accent" routerLink="/recipes">Cancel</button>
+    <button class="save-btn" md-raised-button color="accent" routerLink="/recipe/1">Save</button>
+  </div>
+</div>

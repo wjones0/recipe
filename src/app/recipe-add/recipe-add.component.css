@@ -1,0 +1,36 @@
+
+.btn-group {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+img {
+    width: 35%;
+    height: 35%;
+}
+
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.save-btn {
+    width: 50px;
+}
+
+.section-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.spacer {
+    margin: 25px 0 0 0;
+}

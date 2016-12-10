@@ -13,6 +13,7 @@ import { RecipeListingComponent } from './recipe-listing/recipe-listing.componen
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
+import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -33,7 +34,8 @@ const myFirebaseAuthConfig = {
         RecipeListingComponent,
         RecipeDetailComponent,
         TopnavComponent,
-        RecipeEditComponent
+        RecipeEditComponent,
+        RecipeAddComponent
     ],
     imports: [
         BrowserModule,
