@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { MaterialModule } from '@angular/material';
 
 import { RecipeListingComponent } from './recipe-listing.component';
 
@@ -11,9 +12,10 @@ describe('RecipeListingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecipeListingComponent ]
+      imports: [MaterialModule.forRoot()],
+      declarations: [RecipeListingComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

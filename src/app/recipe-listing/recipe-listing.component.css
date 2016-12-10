@@ -1,0 +1,21 @@
+
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.fab{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+md-card {
+  width: 400px;
+  box-sizing: border-box;
+  margin: 16px;
+}
