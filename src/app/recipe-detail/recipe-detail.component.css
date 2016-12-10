@@ -22,7 +22,6 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .instructions {

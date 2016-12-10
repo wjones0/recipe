@@ -3,3 +3,7 @@
 /* angular material 2 theme */
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
