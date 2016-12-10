@@ -10,10 +10,6 @@
     right: 25px;
 }
 
-.fill-remaining-space {
-  flex: 1 1 auto;
-}
-
 md-card {
   width: 400px;
   box-sizing: border-box;

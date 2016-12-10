@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeListingComponent } from './recipe-listing/recipe-listing.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { TopnavComponent } from './topnav/topnav.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -29,7 +30,8 @@ const myFirebaseAuthConfig = {
     declarations: [
         AppComponent,
         RecipeListingComponent,
-        RecipeDetailComponent
+        RecipeDetailComponent,
+        TopnavComponent
     ],
     imports: [
         BrowserModule,

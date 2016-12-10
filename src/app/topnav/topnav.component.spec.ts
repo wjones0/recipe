@@ -4,26 +4,22 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { MaterialModule } from '@angular/material';
 
-import { RecipeListingComponent } from './recipe-listing.component';
-import { TopnavComponent } from '../topnav/topnav.component';
+import { TopnavComponent } from './topnav.component';
 
-describe('RecipeListingComponent', () => {
-  let component: RecipeListingComponent;
-  let fixture: ComponentFixture<RecipeListingComponent>;
+describe('TopnavComponent', () => {
+  let component: TopnavComponent;
+  let fixture: ComponentFixture<TopnavComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [MaterialModule.forRoot()],
-      declarations: [
-        RecipeListingComponent,
-        TopnavComponent,
-      ]
+      declarations: [TopnavComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecipeListingComponent);
+    fixture = TestBed.createComponent(TopnavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
