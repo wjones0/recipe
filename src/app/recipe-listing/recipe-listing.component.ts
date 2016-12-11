@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { RecipeService } from '../recipe-service/recipe.service';
+import { ThemeService } from '../theme-service/theme.service';
 
 @Component({
   selector: 'app-recipe-listing',
@@ -13,17 +14,25 @@ export class RecipeListingComponent implements OnInit, OnDestroy {
   private recipes: Observable<any>;
   private authSub: Subscription;
 
-  constructor(private _recipeService: RecipeService) { }
+  private theme: string;
+  private themeSub: Subscription;
+
+  constructor(private _recipeService: RecipeService, private _themeService: ThemeService) { }
 
   ngOnInit() {
     this.authSub = this._recipeService.authed.subscribe((value) => {
       if (value)
         this.recipes = this._recipeService.getRecipes();
     });
+
+    this.themeSub = this._themeService.theme.subscribe((value) => {
+      this.theme = value;
+    });
   }
 
   ngOnDestroy() {
     this.authSub.unsubscribe();
+    this.themeSub.unsubscribe();
   }
 
 }

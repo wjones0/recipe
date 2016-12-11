@@ -5,3 +5,7 @@
 .link {
   cursor: pointer;
 }
+
+.theme-select {
+  padding-right: 35px;
+}

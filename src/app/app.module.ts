@@ -16,6 +16,7 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 
 import { RecipeService } from './recipe-service/recipe.service';
+import { ThemeService } from './theme-service/theme.service';
 
 // Must export the config
 export const firebaseConfig = {
@@ -48,7 +49,8 @@ const myFirebaseAuthConfig = {
         MaterialModule.forRoot(),
     ],
     providers: [
-        RecipeService
+        RecipeService,
+        ThemeService
     ],
     bootstrap: [AppComponent]
 })

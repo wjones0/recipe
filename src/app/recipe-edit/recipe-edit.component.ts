@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
+import { ThemeService } from '../theme-service/theme.service';
 import { RecipeService } from '../recipe-service/recipe.service';
 
 @Component({
@@ -19,7 +20,10 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
     private recipe;
 
-    constructor(private _route: ActivatedRoute, private _recipeService: RecipeService, private _router: Router) { }
+    private theme: string;
+    private themeSub: Subscription;
+
+    constructor(private _route: ActivatedRoute, private _recipeService: RecipeService, private _router: Router, private _themeService: ThemeService) { }
 
     ngOnInit() {
         this.routeSub = this._route.params.subscribe(params => {
@@ -28,10 +32,15 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
                 this.recipe = value;
             });
         });
+
+        this.themeSub = this._themeService.theme.subscribe((value) => {
+            this.theme = value;
+        });
     }
 
     ngOnDestroy() {
         this.routeSub.unsubscribe();
+        this.themeSub.unsubscribe();
     }
 
     customTrackBy(index: number, obj: any): any {

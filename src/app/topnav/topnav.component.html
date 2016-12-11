@@ -1,9 +1,17 @@
-<md-toolbar color="primary">
-  <span routerLink="/" class="link">Recipes</span>
+<div [ngClass]="{candytheme:theme==='candytheme',alletheme:theme==='alletheme'}">
+  <md-toolbar color="primary">
+    <span routerLink="/" class="link">Recipes</span>
 
-  <!-- This fills the remaining space of the current row -->
-  <span class="fill-remaining-space"></span>
+    <!-- This fills the remaining space of the current row -->
+    <span class="fill-remaining-space"></span>
 
-  <button md-raised-button color="accent" *ngIf="!auth" (click)="login()">Login</button>
-  <button md-raised-button color="accent" *ngIf="auth" (click)="logout()">Logout</button>
-</md-toolbar>
+    <md-select [(ngModel)]="themeSel" (ngModelChange)="select($event)" class="theme-select">
+      <md-option [value]="'default'">Default</md-option>
+      <md-option [value]="'candytheme'">Candy</md-option>
+      <md-option [value]="'alletheme'">Alle</md-option>
+    </md-select>
+
+    <button md-raised-button color="accent" *ngIf="!auth" (click)="login()">Login</button>
+    <button md-raised-button color="accent" *ngIf="auth" (click)="logout()">Logout</button>
+  </md-toolbar>
+</div>

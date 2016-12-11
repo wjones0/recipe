@@ -1,15 +1,17 @@
-<rec-topnav></rec-topnav>
+<div [ngClass]="{candytheme:theme==='candytheme',alletheme:theme==='alletheme'}">
+  <rec-topnav></rec-topnav>
 
-<div class="card-container">
-  <md-card *ngFor="let r of recipes | async" routerLink="/recipe/{{r.$key}}">
-    <md-card-title-group>
-      <img *ngIf="r.image" md-card-sm-image src="{{r.image}}">
-      <md-card-title>{{r.title}}</md-card-title>
-      <!--<md-card-subtitle>{{r|json}}</md-card-subtitle>-->
-    </md-card-title-group>
-  </md-card>
-</div>
+  <div class="card-container">
+    <md-card *ngFor="let r of recipes | async" routerLink="/recipe/{{r.$key}}">
+      <md-card-title-group>
+        <img *ngIf="r.image" md-card-sm-image src="{{r.image}}">
+        <md-card-title>{{r.title}}</md-card-title>
+        <!--<md-card-subtitle>{{r|json}}</md-card-subtitle>-->
+      </md-card-title-group>
+    </md-card>
+  </div>
 
-<button md-fab class="fab" routerLink="/add">
+  <button md-fab class="fab" routerLink="/add">
     <md-icon>add</md-icon>
 </button>
+</div>

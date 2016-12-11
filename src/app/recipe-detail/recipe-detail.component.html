@@ -1,44 +1,48 @@
-<rec-topnav></rec-topnav>
+<div [ngClass]="{candytheme:theme==='candytheme',alletheme:theme==='alletheme'}">
 
-<div class="recipe-container" *ngIf="recipe">
+  <rec-topnav></rec-topnav>
 
-  <md-card>
-    <md-card-title-group>
-      <img *ngIf="recipe.image" class="card-image" src="{{recipe.image}}">
-      <md-card-title>{{recipe.title}}</md-card-title>
-      <md-card-subtitle>Yield: {{recipe.yield}}</md-card-subtitle>
-      <md-card-subtitle>Time: {{recipe.time}}</md-card-subtitle>
-    </md-card-title-group>
-  </md-card>
+  <div class="recipe-container" *ngIf="recipe">
 
-  <md-list>
-    <div class="ingredients" md-subheader>
-      <h3>Ingredients</h3>
-      <button md-mini-fab (click)="checkingIngredients = !checkingIngredients">
+    <md-card>
+      <md-card-title-group>
+        <img *ngIf="recipe.image" class="card-image" src="{{recipe.image}}">
+        <md-card-title>{{recipe.title}}</md-card-title>
+        <md-card-subtitle>Yield: {{recipe.yield}}</md-card-subtitle>
+        <md-card-subtitle>Time: {{recipe.time}}</md-card-subtitle>
+      </md-card-title-group>
+    </md-card>
+
+    <md-list>
+      <div class="ingredients" md-subheader>
+        <h3>Ingredients</h3>
+        <button md-mini-fab (click)="checkingIngredients = !checkingIngredients">
       <md-icon>check</md-icon>
     </button>
-    </div>
-    <md-list-item *ngFor="let i of recipe.ingredients">
-      <md-checkbox *ngIf="checkingIngredients"></md-checkbox>
-      {{i}}
-    </md-list-item>
-  </md-list>
-
-
-  <div class="instruction-container">
-    <md-list>
-      <div class="instructions" md-subheader>
-        <h3>Instructions</h3>
       </div>
+      <md-list-item *ngFor="let i of recipe.ingredients">
+        <md-checkbox *ngIf="checkingIngredients"></md-checkbox>
+        {{i}}
+      </md-list-item>
     </md-list>
-    <div class="step" *ngFor="let s of recipe.steps; let i=index">
-      <button md-mini-fab class="step-number">{{i+1}}</button>
-      <p>{{s}}</p>
+
+
+    <div class="instruction-container">
+      <md-list>
+        <div class="instructions" md-subheader>
+          <h3>Instructions</h3>
+        </div>
+      </md-list>
+      <div class="step" *ngFor="let s of recipe.steps; let i=index">
+        <button md-mini-fab class="step-number">{{i+1}}</button>
+        <p>{{s}}</p>
+      </div>
     </div>
+
   </div>
 
-</div>
-
-<button md-fab class="fab" routerLink="/edit/{{recipeID}}">
+  <button md-fab class="fab" routerLink="/edit/{{recipeID}}">
     <md-icon>edit</md-icon>
 </button>
+
+</div>
