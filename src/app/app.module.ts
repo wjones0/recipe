@@ -15,6 +15,8 @@ import { TopnavComponent } from './topnav/topnav.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 
+import { RecipeService } from './recipe-service/recipe.service';
+
 // Must export the config
 export const firebaseConfig = {
     apiKey: 'AIzaSyDujc6Q4UXh19oZgu9GnaO-v6yvlIiuUXM',
@@ -45,7 +47,9 @@ const myFirebaseAuthConfig = {
         AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
         MaterialModule.forRoot(),
     ],
-    providers: [],
+    providers: [
+        RecipeService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

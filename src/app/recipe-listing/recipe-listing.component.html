@@ -1,46 +1,11 @@
 <rec-topnav></rec-topnav>
 
 <div class="card-container">
-  <md-card routerLink="/recipe/1">
+  <md-card *ngFor="let r of recipes | async" routerLink="/recipe/{{r.$key}}">
     <md-card-title-group>
-      <img md-card-sm-image src="https://s3.amazonaws.com/pp-test-img/elk-c.png">
-      <md-card-title>Card with title</md-card-title>
-      <md-card-subtitle>Subtitle</md-card-subtitle>
-    </md-card-title-group>
-  </md-card>
-  <md-card routerLink="/recipe/1">
-    <md-card-title-group>
-      <img md-card-sm-image src="https://s3.amazonaws.com/pp-test-img/tuna-c.png">
-      <md-card-title>Card with title</md-card-title>
-      <md-card-subtitle>Subtitle</md-card-subtitle>
-    </md-card-title-group>
-  </md-card>
-  <md-card routerLink="/recipe/1">
-    <md-card-title-group>
-      <img md-card-sm-image src="https://s3.amazonaws.com/pp-test-img/elk-c.png">
-      <md-card-title>Card with title</md-card-title>
-      <md-card-subtitle>Subtitle</md-card-subtitle>
-    </md-card-title-group>
-  </md-card>
-  <md-card routerLink="/recipe/1">
-    <md-card-title-group>
-      <img md-card-sm-image src="https://s3.amazonaws.com/pp-test-img/tuna-c.png">
-      <md-card-title>Card with title</md-card-title>
-      <md-card-subtitle>Subtitle</md-card-subtitle>
-    </md-card-title-group>
-  </md-card>
-  <md-card routerLink="/recipe/1">
-    <md-card-title-group>
-      <img md-card-sm-image src="https://s3.amazonaws.com/pp-test-img/elk-c.png">
-      <md-card-title>Card with title</md-card-title>
-      <md-card-subtitle>Subtitle</md-card-subtitle>
-    </md-card-title-group>
-  </md-card>
-  <md-card routerLink="/recipe/1">
-    <md-card-title-group>
-      <img md-card-sm-image src="https://s3.amazonaws.com/pp-test-img/tuna-c.png">
-      <md-card-title>Card with title</md-card-title>
-      <md-card-subtitle>Subtitle</md-card-subtitle>
+      <img *ngIf="r.image" md-card-sm-image src="{{r.image}}">
+      <md-card-title>{{r.title}}</md-card-title>
+      <!--<md-card-subtitle>{{r|json}}</md-card-subtitle>-->
     </md-card-title-group>
   </md-card>
 </div>

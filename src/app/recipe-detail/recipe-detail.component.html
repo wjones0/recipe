@@ -1,13 +1,13 @@
 <rec-topnav></rec-topnav>
 
-<div class="recipe-container">
+<div class="recipe-container" *ngIf="recipe">
 
   <md-card>
     <md-card-title-group>
-      <img class="card-image" src="https://s3.amazonaws.com/pp-test-img/tuna-c.png">
-      <md-card-title>Title of R</md-card-title>
-      <md-card-subtitle>Yield: 40ish</md-card-subtitle>
-      <md-card-subtitle>Time: 16hrs</md-card-subtitle>
+      <img *ngIf="recipe.image" class="card-image" src="{{recipe.image}}">
+      <md-card-title>{{recipe.title}}</md-card-title>
+      <md-card-subtitle>Yield: {{recipe.yield}}</md-card-subtitle>
+      <md-card-subtitle>Time: {{recipe.time}}</md-card-subtitle>
     </md-card-title-group>
   </md-card>
 
@@ -18,17 +18,9 @@
       <md-icon>check</md-icon>
     </button>
     </div>
-    <md-list-item>
+    <md-list-item *ngFor="let i of recipe.ingredients">
       <md-checkbox *ngIf="checkingIngredients"></md-checkbox>
-      one thousand peppercorns
-    </md-list-item>
-    <md-list-item>
-      <md-checkbox *ngIf="checkingIngredients"></md-checkbox>
-      two million basil leaves
-    </md-list-item>
-    <md-list-item>
-      <md-checkbox *ngIf="checkingIngredients"></md-checkbox>
-      three eggs
+      {{i}}
     </md-list-item>
   </md-list>
 
@@ -39,39 +31,14 @@
         <h3>Instructions</h3>
       </div>
     </md-list>
-    <div class="step">
-      <button md-mini-fab class="step-number">1</button>
-      <p>hi
-      </p>
-    </div>
-    <div class="step">
-      <button md-mini-fab class="step-number">1</button>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur enim cupiditate perferendis cumque labore
-        itaque aperiam quisquam nobis dolor consectetur modi ipsum voluptatibus architecto, reiciendis. Magnam aperiam, voluptate
-        hic.
-      </p>
-    </div>
-    <div class="step">
-      <button md-mini-fab class="step-number">2</button>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In eius laudantium consequuntur at ducimus ratione, incidunt
-        delectus sint mollitia quod excepturi magnam sit iste necessitatibus! Commodi amet illum, ratione quibusdam.</p>
-    </div>
-    <div class="step">
-      <button md-mini-fab class="step-number">3</button>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore quibusdam ducimus ab sed quo sint aspernatur quod
-        in quaerat culpa. Sequi, ipsa nostrum! Deserunt doloribus, cum ipsum inventore omnis molestiae!</p>
-    </div>
-    <div class="step">
-      <button md-mini-fab class="step-number">4</button>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus quisquam quia quis molestiae distinctio veniam
-        necessitatibus nulla animi expedita assumenda delectus, rem adipisci eaque ducimus nam, perferendis iusto. Minus,
-        sed.
-      </p>
+    <div class="step" *ngFor="let s of recipe.steps; let i=index">
+      <button md-mini-fab class="step-number">{{i+1}}</button>
+      <p>{{s}}</p>
     </div>
   </div>
 
 </div>
 
-<button md-fab class="fab" routerLink="/edit/1">
+<button md-fab class="fab" routerLink="/edit/{{recipeID}}">
     <md-icon>edit</md-icon>
 </button>

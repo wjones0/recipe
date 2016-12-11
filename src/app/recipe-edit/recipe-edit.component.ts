@@ -1,33 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Subscription } from 'rxjs/Subscription';
+
+import { RecipeService } from '../recipe-service/recipe.service';
 
 @Component({
-  selector: 'app-recipe-edit',
-  templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.css']
+    selector: 'app-recipe-edit',
+    templateUrl: './recipe-edit.component.html',
+    styleUrls: ['./recipe-edit.component.css']
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, OnDestroy {
 
-  recipe = {
-    title: "Title of R",
-    yield: "40ish",
-    time: "16hrs",
-    image: "https://s3.amazonaws.com/pp-test-img/tuna-c.png",
-    ingredients: [
-      "one thousand peppercorns",
-      "two million basil leaves",
-      "three eggs",
-    ],
-    steps: [
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam pariatur enim cupiditate perferendis cumque labore itaque aperiam quisquam nobis dolor consectetur modi ipsum voluptatibus architecto, reiciendis. Magnam aperiam, voluptate hic.",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In eius laudantium consequuntur at ducimus ratione, incidunt delectus sint mollitia quod excepturi magnam sit iste necessitatibus! Commodi amet illum, ratione quibusdam.",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore quibusdam ducimus ab sed quo sint aspernatur quod in quaerat culpa. Sequi, ipsa nostrum! Deserunt doloribus, cum ipsum inventore omnis molestiae!",
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus quisquam quia quis molestiae distinctio veniam necessitatibus nulla animi expedita assumenda delectus, rem adipisci eaque ducimus nam, perferendis iusto. Minus, sed."
-    ]
-  }
+    private routeSub: Subscription;
 
-  constructor() { }
+    private checkingIngredients: boolean = false;
+    private recipeID: string;
 
-  ngOnInit() {
-  }
+    private recipe;
+
+    constructor(private _route: ActivatedRoute, private _recipeService: RecipeService, private _router: Router) { }
+
+    ngOnInit() {
+        this.routeSub = this._route.params.subscribe(params => {
+            this.recipeID = decodeURI(params['id']);
+            this._recipeService.getRecipe(this.recipeID).subscribe((value) => {
+                this.recipe = value;
+            });
+        });
+    }
+
+    ngOnDestroy() {
+        this.routeSub.unsubscribe();
+    }
+
+    customTrackBy(index: number, obj: any): any {
+        return index;
+    }
+
+    save() {
+        this._recipeService.updateRecipe(this.recipe);
+        this._router.navigate(['/recipe/' + this.recipe.$key]);
+    }
 
 }
