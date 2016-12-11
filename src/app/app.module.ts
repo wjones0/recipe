@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
 import { MaterialModule } from '@angular/material';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';

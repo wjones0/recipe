@@ -43,4 +43,8 @@ export class RecipeService {
         });
     }
 
+    deleteRecipe(recipe) {
+        this._af.database.object('/' + this.uid + "/recipes/" + recipe.$key).remove();
+    }
+
 }

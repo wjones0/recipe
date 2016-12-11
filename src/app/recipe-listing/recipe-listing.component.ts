@@ -17,6 +17,8 @@ export class RecipeListingComponent implements OnInit, OnDestroy {
   private theme: string;
   private themeSub: Subscription;
 
+  private showDelete: boolean = false;
+
   constructor(private _recipeService: RecipeService, private _themeService: ThemeService) { }
 
   ngOnInit() {
@@ -33,6 +35,10 @@ export class RecipeListingComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authSub.unsubscribe();
     this.themeSub.unsubscribe();
+  }
+
+  delete(recipe) {
+    this._recipeService.deleteRecipe(recipe);
   }
 
 }
