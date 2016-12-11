@@ -3,6 +3,10 @@
     height: 35%;
 }
 
+.done {
+    text-decoration: line-through;
+}
+
 .fab{
     position: fixed;
     bottom: 25px;

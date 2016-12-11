@@ -23,6 +23,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
     private theme: string;
     private themeSub: Subscription;
 
+    private stepsDone: boolean[];
+
     constructor(private _route: ActivatedRoute, private _recipeService: RecipeService, private _themeService: ThemeService) { }
 
     ngOnInit() {
@@ -30,6 +32,11 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
             this.recipeID = decodeURI(params['id']);
             this._recipeService.getRecipe(this.recipeID).subscribe((value) => {
                 this.recipe = value;
+
+                this.stepsDone = [];
+                for (let r of this.recipe.steps) {
+                    this.stepsDone.push(false);
+                }
             });
         });
 

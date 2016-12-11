@@ -34,8 +34,8 @@
         </div>
       </md-list>
       <div class="step" *ngFor="let s of recipe.steps; let i=index">
-        <button md-mini-fab class="step-number">{{i+1}}</button>
-        <p>{{s}}</p>
+        <button md-mini-fab class="step-number" (click)="stepsDone[i] = !stepsDone[i]">{{i+1}}</button>
+        <p [ngClass]="{done:stepsDone[i]}">{{s}}</p>
       </div>
     </div>
 
