@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import { RecipeService } from '../recipe-service/recipe.service';
-import { ThemeService } from '../theme-service/theme.service';
+import { RecipeService } from '../shared/recipe-service/recipe.service';
+import { ThemeService } from '../shared/theme-service/theme.service';
 
 @Component({
   selector: 'app-recipe-listing',

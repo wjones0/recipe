@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
-import { ThemeService } from '../theme-service/theme.service';
+import { ThemeService } from '../shared/theme-service/theme.service';
 
 @Component({
     selector: 'rec-topnav',

@@ -2,37 +2,62 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { MaterialModule } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
+import { AngularFire } from 'angularfire2';
+import { DragulaModule } from 'ng2-dragula';
+import 'hammerjs';
 
 import { RecipeEditComponent } from './recipe-edit.component';
 import { TopnavComponent } from '../topnav/topnav.component';
 
+import { RecipeService } from '../shared/recipe-service/recipe.service';
+import { ThemeService } from '../shared/theme-service/theme.service';
+
+import { RouterLinkStubDirective, ActivatedRouteStub, RouterStub } from '../shared/testing/routerstubs';
+import { RecipeServiceMock } from '../shared/recipe-service/recipe.service.mock';
+import { Firemocksvc } from '../shared/testing/firemock';
+
 describe('RecipeEditComponent', () => {
-  let component: RecipeEditComponent;
-  let fixture: ComponentFixture<RecipeEditComponent>;
+    let component: RecipeEditComponent;
+    let fixture: ComponentFixture<RecipeEditComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        MaterialModule.forRoot(),
-        FormsModule
-      ],
-      declarations: [
-        RecipeEditComponent,
-        TopnavComponent,
-      ]
-    })
-      .compileComponents();
-  }));
+    let actrt = new ActivatedRouteStub();
+    actrt.testParams = {
+        id: "hiheyhi"
+    }
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RecipeEditComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                MaterialModule.forRoot(),
+                FormsModule,
+                DragulaModule
+            ],
+            declarations: [
+                RecipeEditComponent,
+                TopnavComponent,
+                RouterLinkStubDirective,
+            ],
+            providers: [
+                { provide: RecipeService, useClass: RecipeServiceMock },
+                ThemeService,
+                { provide: AngularFire, useClass: Firemocksvc },
+                { provide: ActivatedRoute, useValue: actrt },
+                { provide: Router, useClass: RouterStub }
+            ]
+        })
+            .compileComponents();
+    }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(RecipeEditComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

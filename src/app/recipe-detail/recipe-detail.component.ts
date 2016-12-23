@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
-import { ThemeService } from '../theme-service/theme.service';
-import { RecipeService } from '../recipe-service/recipe.service';
+import { ThemeService } from '../shared/theme-service/theme.service';
+import { RecipeService } from '../shared/recipe-service/recipe.service';
 
 @Component({
     selector: 'app-recipe-detail',

@@ -17,8 +17,8 @@ import { TopnavComponent } from './topnav/topnav.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
 
-import { RecipeService } from './recipe-service/recipe.service';
-import { ThemeService } from './theme-service/theme.service';
+import { RecipeService } from './shared/recipe-service/recipe.service';
+import { ThemeService } from './shared/theme-service/theme.service';
 
 // Must export the config
 export const firebaseConfig = {
