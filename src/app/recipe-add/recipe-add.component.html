@@ -18,7 +18,7 @@
     <div class="section-header">
       <h3>Ingredients</h3>
       <div class="fill-remaining-space"></div>
-      <button md-mini-fab (click)="recipe.ingredients.push('')">
+      <button class="add-ing" md-mini-fab (click)="recipe.ingredients.push('')">
             <md-icon>add</md-icon>
         </button>
     </div>
@@ -28,7 +28,7 @@
     <div class="section-header">
       <h3>Instructions</h3>
       <div class="fill-remaining-space"></div>
-      <button md-mini-fab (click)="recipe.steps.push('')">
+      <button class="add-step" md-mini-fab (click)="recipe.steps.push('')">
             <md-icon>add</md-icon>
         </button>
     </div>
@@ -36,7 +36,7 @@
     <div class="spacer"></div>
 
     <div class="btn-group">
-      <button class="save-btn" md-raised-button color="accent" routerLink="/recipes">Cancel</button>
+      <button class="cancel-btn" md-raised-button color="accent" routerLink="/recipes">Cancel</button>
       <button class="save-btn" [disabled]="(recipe.steps.length == 0) || (recipe.ingredients.length == 0)" md-raised-button color="accent"
         (click)="save()">Save</button>
     </div>
