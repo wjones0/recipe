@@ -13,6 +13,11 @@ img {
     height: 35%;
 }
 
+.ingredient-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .recipe-container {
     display: flex;
     flex-direction: column;

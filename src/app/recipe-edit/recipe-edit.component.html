@@ -22,7 +22,11 @@
             <md-icon>add</md-icon>
         </button>
         </div>
-        <md-input *ngFor="let ing of recipe.ingredients; let i=index; trackBy: customTrackBy" placeholder="Ingredient" [(ngModel)]="recipe.ingredients[i]"></md-input>
+
+        <!--drag and drop doesn't really work with firebase - at least this easy way-->
+        <div class="ingredient-container" [dragula]="ingredients" [dragulaModel]="recipe.ingredients">
+            <md-input *ngFor="let ing of recipe.ingredients; let i=index; trackBy: customTrackBy" placeholder="Ingredient" [(ngModel)]="recipe.ingredients[i]"></md-input>
+        </div>
         <div class="spacer"></div>
 
         <div class="section-header">

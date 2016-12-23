@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
 import { MaterialModule } from '@angular/material';
+import { DragulaModule } from 'ng2-dragula';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -48,6 +49,7 @@ const myFirebaseAuthConfig = {
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
         MaterialModule.forRoot(),
+        DragulaModule
     ],
     providers: [
         RecipeService,
