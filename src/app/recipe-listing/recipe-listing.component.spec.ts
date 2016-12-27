@@ -3,6 +3,7 @@ import { } from 'jasmine';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { AngularFire } from 'angularfire2';
@@ -14,13 +15,16 @@ import { TopnavComponent } from '../topnav/topnav.component';
 import { RecipeService } from '../shared/recipe-service/recipe.service';
 import { ThemeService } from '../shared/theme-service/theme.service';
 
-import { RouterLinkStubDirective } from '../shared/testing/routerstubs';
+import { RouterLinkStubDirective, ActivatedRouteStub, RouterStub } from '../shared/testing/routerstubs';
 import { RecipeServiceMock } from '../shared/recipe-service/recipe.service.mock';
 import { Firemocksvc } from '../shared/testing/firemock';
+import { click } from '../shared/testing/click';
 
 describe('RecipeListingComponent', () => {
   let component: RecipeListingComponent;
   let fixture: ComponentFixture<RecipeListingComponent>;
+  let deletedsomething: string = '';
+  let delSpy: jasmine.Spy;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -36,7 +40,8 @@ describe('RecipeListingComponent', () => {
       providers: [
         { provide: RecipeService, useClass: RecipeServiceMock },
         ThemeService,
-        { provide: AngularFire, useClass: Firemocksvc }
+        { provide: AngularFire, useClass: Firemocksvc },
+        { provide: Router, useClass: RouterStub }
       ]
     })
       .compileComponents();
@@ -45,11 +50,69 @@ describe('RecipeListingComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RecipeListingComponent);
     component = fixture.componentInstance;
+
+    let recsvc = fixture.debugElement.injector.get(RecipeService);
+    delSpy = spyOn(recsvc, 'deleteRecipe').and.callFake((recipe) => {
+      deletedsomething = recipe.$key;
+    });
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should list the recipes', () => {
+    fixture.whenStable().then(() => {
+      let des = fixture.debugElement.queryAll(By.css('md-card-title'));
+
+      expect(des[0].nativeElement.textContent).toContain('Chicken Tortilla Soup');
+      expect(des[1].nativeElement.textContent).toContain('Chili');
+      expect(des[2].nativeElement.textContent).toContain('Red Curry Thai Noodle');
+    });
+  });
+
+  it('should navigate to the recipe when clicked', () => {
+    let des = fixture.debugElement.queryAll(By.css('md-card-title-group'));
+
+    let rlinksvc = des[1].injector.get(RouterLinkStubDirective);
+    expect(rlinksvc.navigatedTo).toBeNull;
+
+    click(des[1]);
+
+    fixture.detectChanges();
+
+    expect(rlinksvc.navigatedTo).toBe('/recipe/key2');
+  });
+
+  it('should show delete option when longpress', () => {
+    let des = fixture.debugElement.queryAll(By.css('.del-fab'));
+
+    expect(des.length).toBe(0);
+
+    des = fixture.debugElement.queryAll(By.css('md-card-title-group'));
+    des[0].triggerEventHandler('longpress', null);
+
+    fixture.detectChanges();
+
+    des = fixture.debugElement.queryAll(By.css('.del-fab'));
+
+    expect(des.length).toBe(3);
+
+  });
+
+  it('should have a delete function', () => {
+    let des = fixture.debugElement.queryAll(By.css('md-card-title-group'));
+    des[0].triggerEventHandler('longpress', null);
+
+    fixture.detectChanges();
+    des = fixture.debugElement.queryAll(By.css('.del-fab'));
+
+    click(des[1]);
+
+    expect(deletedsomething).toBe('key2');
+  });
+
 });
 

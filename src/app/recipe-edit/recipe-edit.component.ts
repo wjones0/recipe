@@ -18,7 +18,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     private checkingIngredients: boolean = false;
     private recipeID: string;
 
-    private recipe;
+    recipe;
 
     private theme: string;
     private themeSub: Subscription;

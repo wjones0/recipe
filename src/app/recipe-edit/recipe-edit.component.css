@@ -4,6 +4,10 @@
     flex-direction: row-reverse;
 }
 
+.cancel-btn {
+    width: 50px;
+}
+
 .fill-remaining-space {
   flex: 1 1 auto;
 }
