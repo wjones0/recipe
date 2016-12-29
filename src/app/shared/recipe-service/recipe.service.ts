@@ -15,8 +15,13 @@ export class RecipeService {
 
     constructor(private _af: AngularFire) {
         this.authSub = this._af.auth.subscribe((value) => {
-            this.uid = value.uid;
-            this._authed.next(true);
+            if (value) {
+                this.uid = value.uid;
+                this._authed.next(true);
+            }
+            else {
+                this._authed.next(false);
+            }
         });
     }
 

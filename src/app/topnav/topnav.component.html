@@ -5,13 +5,23 @@
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
 
-    <md-select [(ngModel)]="themeSel" (ngModelChange)="select($event)" class="theme-select">
+    <!--<md-select [(ngModel)]="themeSel" (ngModelChange)="select($event)" class="theme-select">
       <md-option [value]="'default'">Default</md-option>
       <md-option [value]="'candytheme'">Candy</md-option>
       <md-option [value]="'alletheme'">Alle</md-option>
-    </md-select>
+    </md-select>-->
 
     <button md-raised-button color="accent" *ngIf="!auth" (click)="login()">Login</button>
-    <button md-raised-button color="accent" *ngIf="auth" (click)="logout()">Logout</button>
+    <button md-raised-button color="accent" *ngIf="auth" [mdMenuTriggerFor]="appMenu">
+      {{auth.auth.displayName}}
+      <md-icon>arrow_drop_down</md-icon>
+    </button>
+
+    <md-menu #appMenu="mdMenu">
+      <button md-menu-item> Settings </button>
+      <button md-menu-item> Sharing Center </button>
+      <button md-menu-item color="accent" (click)="logout()">Logout</button>
+    </md-menu>
+
   </md-toolbar>
 </div>

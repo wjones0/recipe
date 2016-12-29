@@ -14,5 +14,8 @@ md-card {
   width: 400px;
   box-sizing: border-box;
   margin: 16px;
+}
+
+md-card-title-group {
   cursor: pointer;
 }
