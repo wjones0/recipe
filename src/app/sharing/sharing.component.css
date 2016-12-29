@@ -1,0 +1,19 @@
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.header {
+    padding-bottom: 56px;
+    border-bottom: solid;
+}
+
+md-card {
+  width: 300px;
+  box-sizing: border-box;
+  margin: 16px;
+}
+
+md-card-title-group {
+  cursor: pointer;
+}

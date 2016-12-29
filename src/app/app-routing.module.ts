@@ -5,12 +5,14 @@ import { RecipeListingComponent } from './recipe-listing/recipe-listing.componen
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
+import { SharingComponent } from './sharing/sharing.component';
 
 const appRoutes: Routes = [
     { path: 'recipes', component: RecipeListingComponent },
     { path: 'recipe/:id', component: RecipeDetailComponent },
     { path: 'edit/:id', component: RecipeEditComponent },
     { path: 'add', component: RecipeAddComponent },
+    { path: 'sharing', component: SharingComponent },
     { path: '', redirectTo: '/recipes', pathMatch: 'full' },
 ];
 

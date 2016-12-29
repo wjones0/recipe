@@ -16,9 +16,11 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipeAddComponent } from './recipe-add/recipe-add.component';
+import { SharingComponent } from './sharing/sharing.component';
 
 import { RecipeService } from './shared/recipe-service/recipe.service';
 import { ThemeService } from './shared/theme-service/theme.service';
+import { SharingService } from './shared/sharing-service/sharing.service';
 
 // Must export the config
 export const firebaseConfig = {
@@ -40,7 +42,8 @@ const myFirebaseAuthConfig = {
         RecipeDetailComponent,
         TopnavComponent,
         RecipeEditComponent,
-        RecipeAddComponent
+        RecipeAddComponent,
+        SharingComponent
     ],
     imports: [
         BrowserModule,
@@ -53,6 +56,7 @@ const myFirebaseAuthConfig = {
     ],
     providers: [
         RecipeService,
+        SharingService,
         ThemeService
     ],
     bootstrap: [AppComponent]

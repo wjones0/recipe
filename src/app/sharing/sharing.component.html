@@ -1,0 +1,51 @@
+<rec-topnav></rec-topnav>
+
+
+{{iSharedWith | async | json}} {{sharedWithMe | async | json}} {{auth | json}}
+
+
+<md-list>
+    <div class="header" md-subheader>
+        <h1>People that have shared with you</h1>
+    </div>
+</md-list>
+
+<div class="card-container">
+    <md-card *ngFor="let r of sharedWithMe | async">
+        <md-card-title-group (longpress)="showDelete = !showDelete">
+            <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
+            <md-card-title>{{r.$value}}
+            </md-card-title>
+            <md-card-subtitle>34 Recipes</md-card-subtitle>
+        </md-card-title-group>
+        <md-card-footer *ngIf="showDelete">
+            <button class="del-fab" md-mini-fab (click)="delete(r)">
+            <md-icon>delete</md-icon>
+        </button>
+        </md-card-footer>
+    </md-card>
+</div>
+
+
+
+<md-list>
+    <div class="header" md-subheader>
+        <h1>People you have shared with</h1>
+    </div>
+</md-list>
+
+<div class="card-container">
+    <md-card *ngFor="let r of iSharedWith | async">
+        <md-card-title-group (longpress)="showDelete = !showDelete">
+            <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
+            <md-card-title>{{r.$value}}
+            </md-card-title>
+            <md-card-subtitle>34 Recipes</md-card-subtitle>
+        </md-card-title-group>
+        <md-card-footer *ngIf="showDelete">
+            <button class="del-fab" md-mini-fab (click)="delete(r)">
+            <md-icon>delete</md-icon>
+        </button>
+        </md-card-footer>
+    </md-card>
+</div>

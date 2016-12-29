@@ -18,10 +18,18 @@
     </button>
 
     <md-menu #appMenu="mdMenu">
-      <button md-menu-item> Settings </button>
-      <button md-menu-item> Sharing Center </button>
-      <button md-menu-item color="accent" (click)="logout()">Logout</button>
+      <button md-menu-item>
+        <md-icon>settings</md-icon>
+        Settings 
+      </button>
+      <button md-menu-item routerLink="/sharing">
+        <md-icon>share</md-icon> 
+        Sharing Center 
+      </button>
+      <button md-menu-item color="accent" (click)="logout()">
+        <md-icon>power_settings_new</md-icon>
+        Logout
+      </button>
     </md-menu>
-
   </md-toolbar>
 </div>
