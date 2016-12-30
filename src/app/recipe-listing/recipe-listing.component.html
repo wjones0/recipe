@@ -3,7 +3,7 @@
 
   <div class="card-container">
     <md-card *ngFor="let r of recipes | async">
-      <md-card-title-group routerLink="/recipe/{{r.$key}}" (longpress)="showDelete = !showDelete">
+      <md-card-title-group routerLink="/recipe/{{r.childKey}}" (longpress)="showDelete = !showDelete">
         <img *ngIf="r.image" md-card-sm-image src="{{r.image}}">
         <md-card-title>{{r.title}}
         </md-card-title>

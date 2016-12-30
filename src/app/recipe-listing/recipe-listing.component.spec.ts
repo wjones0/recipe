@@ -83,7 +83,7 @@ describe('RecipeListingComponent', () => {
 
     fixture.detectChanges();
 
-    expect(rlinksvc.navigatedTo).toBe('/recipe/key2');
+    expect(rlinksvc.navigatedTo).toBe('/recipe/ckey2');
   });
 
   it('should show delete option when longpress', () => {

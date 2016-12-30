@@ -26,11 +26,35 @@ export class RecipeService {
     }
 
     addRecipe(recipe) {
-        return this._af.database.list('/' + this.uid + "/recipes").push(recipe);
+        // variable to save the header key
+        let headerkey: string = '';
+        return this.addRecipeHeader(recipe).then((header) => {
+            // added header - get key
+            recipe.headerKey = header.key;
+            headerkey = header.key;
+
+            // push the child with the header key as an added field
+            return this._af.database.list('/' + this.uid + "/recipes/").push(recipe);
+        }).then((child) => {
+            // update the header with the child key after we added - and return the child back
+            this._af.database.object('/' + this.uid + "/recipe-headers/" + headerkey).update({
+                childKey: child.key
+            });
+            return Promise.resolve(child);
+        });
+    }
+
+    addRecipeHeader(recipe) {
+        return this._af.database.list('/' + this.uid + "/recipe-headers").push({
+            title: recipe.title,
+            yield: recipe.yield,
+            time: recipe.time,
+            image: recipe.image
+        });
     }
 
     getRecipes(): any {
-        return this._af.database.list('/' + this.uid + "/recipes");
+        return this._af.database.list('/' + this.uid + "/recipe-headers");
     }
 
     getRecipe(id: string) {
@@ -46,10 +70,17 @@ export class RecipeService {
             ingredients: recipe.ingredients,
             steps: recipe.steps
         });
+        this._af.database.object('/' + this.uid + "/recipe-headers/" + recipe.headerKey).update({
+            title: recipe.title,
+            yield: recipe.yield,
+            time: recipe.time,
+            image: recipe.image,
+        });
     }
 
     deleteRecipe(recipe) {
-        this._af.database.object('/' + this.uid + "/recipes/" + recipe.$key).remove();
+        this._af.database.object('/' + this.uid + "/recipe-headers/" + recipe.$key).remove();
+        this._af.database.object('/' + this.uid + "/recipes/" + recipe.childKey).remove();
     }
 
 }
