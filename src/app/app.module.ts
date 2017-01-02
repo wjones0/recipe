@@ -21,6 +21,7 @@ import { SharingComponent } from './sharing/sharing.component';
 import { RecipeService } from './shared/recipe-service/recipe.service';
 import { ThemeService } from './shared/theme-service/theme.service';
 import { SharingService } from './shared/sharing-service/sharing.service';
+import { ShareDialogComponent } from './share-dialog/share-dialog.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -43,7 +44,11 @@ const myFirebaseAuthConfig = {
         TopnavComponent,
         RecipeEditComponent,
         RecipeAddComponent,
-        SharingComponent
+        SharingComponent,
+        ShareDialogComponent
+    ],
+    entryComponents: [
+        ShareDialogComponent
     ],
     imports: [
         BrowserModule,

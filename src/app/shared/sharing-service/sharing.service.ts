@@ -13,6 +13,7 @@ export class SharingService {
     this._af.auth.subscribe((value) => {
       if (value) {
         this.uid = value.uid;
+        console.log(value);
       }
       else {
       }
@@ -25,6 +26,11 @@ export class SharingService {
 
   getISharedWith() {
     return this._af.database.list('/' + this.uid + "/shared_with");
+  }
+
+  sharewith(person: string) {
+    this._af.database.object('/' + this.uid + "/shared_with/" + person).set('will');
+    this._af.database.object('/' + person + "/shares/" + this.uid).set('will');
   }
 
 }

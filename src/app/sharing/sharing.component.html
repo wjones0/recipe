@@ -16,7 +16,7 @@
             <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
             <md-card-title>{{r.$value}}
             </md-card-title>
-            <md-card-subtitle>34 Recipes</md-card-subtitle>
+            <md-card-subtitle>?? Recipes</md-card-subtitle>
         </md-card-title-group>
         <md-card-footer *ngIf="showDelete">
             <button class="del-fab" md-mini-fab (click)="delete(r)">
@@ -30,7 +30,13 @@
 
 <md-list>
     <div class="header" md-subheader>
-        <h1>People you have shared with</h1>
+        <h1>
+            People you have shared with
+        </h1>
+        <div class="fill-remaining-space"></div>
+        <button md-mini-fab (click)="openDialog()">
+            <md-icon>share</md-icon>
+        </button>
     </div>
 </md-list>
 
@@ -40,7 +46,7 @@
             <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
             <md-card-title>{{r.$value}}
             </md-card-title>
-            <md-card-subtitle>34 Recipes</md-card-subtitle>
+            <md-card-subtitle>?? Recipes</md-card-subtitle>
         </md-card-title-group>
         <md-card-footer *ngIf="showDelete">
             <button class="del-fab" md-mini-fab (click)="delete(r)">

@@ -1,0 +1,8 @@
+<h1>Share with whom?</h1>
+
+<md-input placeholder="who?" #input></md-input>
+
+<md-dialog-actions>
+  <button md-raised-button (click)="dialogRef.close(input.value)">Share</button>
+  <button md-raised-button md-dialog-close>Cancel</button>
+</md-dialog-actions>
