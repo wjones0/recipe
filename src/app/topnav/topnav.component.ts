@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { AngularFire, FirebaseAuthState } from 'angularfire2';
 
 import { ThemeService } from '../shared/theme-service/theme.service';
+import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 
 @Component({
     selector: 'rec-topnav',
@@ -11,7 +11,7 @@ import { ThemeService } from '../shared/theme-service/theme.service';
 })
 export class TopnavComponent implements OnInit, OnDestroy {
 
-    private auth: FirebaseAuthState;
+    private auth: any;
     private authSub: Subscription;
 
     private theme: string;
@@ -19,10 +19,10 @@ export class TopnavComponent implements OnInit, OnDestroy {
 
     private themeSel: string;
 
-    constructor(private _af: AngularFire, private _themeService: ThemeService) { }
+    constructor(private _userService: UserprofilesService, private _themeService: ThemeService) { }
 
     ngOnInit() {
-        this.authSub = this._af.auth.subscribe((value) => {
+        this.authSub = this._userService.authed.subscribe((value) => {
             this.auth = value;
         });
 
@@ -38,11 +38,11 @@ export class TopnavComponent implements OnInit, OnDestroy {
     }
 
     login() {
-        this._af.auth.login();
+        this._userService.login();
     }
 
     logout() {
-        this._af.auth.logout();
+        this._userService.logout();
     }
 
     select(e) {

@@ -17,12 +17,12 @@ import { SharingServiceMock } from '../shared/sharing-service/sharing.service.mo
 import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofiles.service.mock';
 
-import { SharingComponent } from './sharing.component';
+import { SettingsComponent } from './settings.component';
 import { TopnavComponent } from '../topnav/topnav.component';
 
-describe('SharingComponent', () => {
-  let component: SharingComponent;
-  let fixture: ComponentFixture<SharingComponent>;
+describe('SettingsComponent', () => {
+  let component: SettingsComponent;
+  let fixture: ComponentFixture<SettingsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -31,7 +31,7 @@ describe('SharingComponent', () => {
         FormsModule,
       ],
       declarations: [
-        SharingComponent,
+        SettingsComponent,
         TopnavComponent
       ],
       providers: [
@@ -45,12 +45,39 @@ describe('SharingComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SharingComponent);
+    fixture = TestBed.createComponent(SettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show the username if the user has one', () => {
+    let de = fixture.debugElement.query(By.css('h1'));
+    let el: Element = de.nativeElement;
+
+    expect(el.textContent).toContain('nameymcnameface');
+  });
+
+  it('should allow the user to edit their name', () => {
+    let de = fixture.debugElement.query(By.css('.userdetails>button'));
+
+    click(de);
+    fixture.detectChanges();
+
+    de = fixture.debugElement.query(By.css('md-input'));
+    expect(de).toBeTruthy();
+  });
+
+  it('should show an input box if the user has no username', () => {
+    let usersvc = fixture.debugElement.injector.get(UserprofilesService);
+
+    usersvc.deauth();
+    fixture.detectChanges();
+
+    let de = fixture.debugElement.query(By.css('md-input'));
+    expect(de).toBeTruthy();
   });
 });

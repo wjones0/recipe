@@ -14,6 +14,8 @@ import { TopnavComponent } from '../topnav/topnav.component';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
 import { ThemeService } from '../shared/theme-service/theme.service';
+import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
+import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofiles.service.mock';
 
 import { RouterLinkStubDirective, ActivatedRouteStub, RouterStub } from '../shared/testing/routerstubs';
 import { Firemocksvc } from '../shared/testing/firemock';
@@ -47,7 +49,8 @@ describe('RecipeAddComponent', () => {
                 ThemeService,
                 { provide: AngularFire, useClass: Firemocksvc },
                 { provide: ActivatedRoute, useValue: actrt },
-                { provide: Router, useClass: RouterStub }
+                { provide: Router, useClass: RouterStub },
+                { provide: UserprofilesService, useClass: UserProfileServiceMock },
             ]
         })
             .compileComponents();

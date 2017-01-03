@@ -12,13 +12,13 @@
     </md-select>-->
 
     <button md-raised-button color="accent" *ngIf="!auth" (click)="login()">Login</button>
-    <button md-raised-button color="accent" *ngIf="auth" [mdMenuTriggerFor]="appMenu">
-      {{auth.auth.displayName}}
+    <button md-raised-button color="accent" *ngIf="auth && auth.profile" [mdMenuTriggerFor]="appMenu">
+      {{auth.username}}
       <md-icon>arrow_drop_down</md-icon>
     </button>
 
     <md-menu #appMenu="mdMenu">
-      <button md-menu-item>
+      <button md-menu-item routerLink="/settings">
         <md-icon>settings</md-icon>
         Settings 
       </button>

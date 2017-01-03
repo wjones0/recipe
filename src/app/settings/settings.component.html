@@ -1,0 +1,17 @@
+<rec-topnav></rec-topnav>
+
+<div class="container">
+  <div class="userprofile" *ngIf="profile">
+    <img class="profilepic" src="{{profile.picture}}">
+    <div class="userdetails" *ngIf="!profile.profile || editing">
+      <md-input placeholder="Username" [(ngModel)]="username"></md-input>
+      <div class="fill-remaining-space"></div>
+      <button md-raised-button color="accent" (click)="save()">Save</button>
+    </div>
+    <div class="userdetails" *ngIf="profile.profile && !editing">
+      <h1>{{profile.username}}</h1>
+      <div class="fill-remaining-space"></div>
+      <button md-raised-button color="accent" (click)="editing = true">Edit</button>
+    </div>
+  </div>
+</div>

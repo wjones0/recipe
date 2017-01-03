@@ -14,9 +14,11 @@ import { TopnavComponent } from '../topnav/topnav.component';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
 import { ThemeService } from '../shared/theme-service/theme.service';
+import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 
 import { RouterLinkStubDirective, ActivatedRouteStub, RouterStub } from '../shared/testing/routerstubs';
 import { RecipeServiceMock } from '../shared/recipe-service/recipe.service.mock';
+import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofiles.service.mock';
 import { Firemocksvc } from '../shared/testing/firemock';
 import { click } from '../shared/testing/click';
 
@@ -39,6 +41,7 @@ describe('RecipeListingComponent', () => {
       ],
       providers: [
         { provide: RecipeService, useClass: RecipeServiceMock },
+        { provide: UserprofilesService, useClass: UserProfileServiceMock },
         ThemeService,
         { provide: AngularFire, useClass: Firemocksvc },
         { provide: Router, useClass: RouterStub }
@@ -63,7 +66,7 @@ describe('RecipeListingComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should list the recipes', () => {
+  it('should list the recipes when authed', () => {
     fixture.whenStable().then(() => {
       let des = fixture.debugElement.queryAll(By.css('md-card-title'));
 
@@ -112,6 +115,18 @@ describe('RecipeListingComponent', () => {
     click(des[1]);
 
     expect(deletedsomething).toBe('key2');
+  });
+
+  it('should navigate to profile page if no profile is present', () => {
+    let userservice = fixture.debugElement.injector.get(UserprofilesService);
+    let router = fixture.debugElement.injector.get(Router);
+
+    expect(router.navigatedTo).toBeNull();
+    userservice.deauth();
+
+    fixture.detectChanges();
+
+    expect(router.navigatedTo[0]).toBe('/settings');
   });
 
 });

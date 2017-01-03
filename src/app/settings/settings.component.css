@@ -1,0 +1,36 @@
+
+button {
+    width: 50px;
+    align-self: flex-end;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+md-input {
+    width: 100%;
+}
+
+.userdetails {
+    margin-left: 35px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.userprofile {
+    width: 60%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profilepic {
+    height: 200px;
+}

@@ -4,12 +4,12 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
-import { AngularFire } from 'angularfire2';
 
 import { TopnavComponent } from './topnav.component';
 import { ThemeService } from '../shared/theme-service/theme.service';
+import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 
-import { Firemocksvc } from '../shared/testing/firemock';
+import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofiles.service.mock';
 import { click } from '../shared/testing/click';
 
 describe('TopnavComponent', () => {
@@ -24,7 +24,7 @@ describe('TopnavComponent', () => {
             ],
             declarations: [TopnavComponent],
             providers: [
-                { provide: AngularFire, useClass: Firemocksvc },
+                { provide: UserprofilesService, useClass: UserProfileServiceMock },
                 ThemeService,
             ]
         })
