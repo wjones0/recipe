@@ -40,4 +40,8 @@ export class SharingComponent implements OnInit {
     });
   }
 
+  delete(person) {
+    this._sharing.revokeShare(person.$key);
+  }
+
 }

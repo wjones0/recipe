@@ -4,16 +4,19 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { AngularFire } from 'angularfire2';
 
+import { UserprofilesService } from '../userprofiles-service/userprofiles.service';
+
 @Injectable()
 export class SharingService {
 
   private uid: string;
+  private profile: any;
 
-  constructor(private _af: AngularFire) {
-    this._af.auth.subscribe((value) => {
+  constructor(private _userService: UserprofilesService, private _af: AngularFire) {
+    this._userService.authed.subscribe((value) => {
       if (value) {
         this.uid = value.uid;
-        console.log(value);
+        this.profile = value;
       }
       else {
       }
@@ -29,8 +32,21 @@ export class SharingService {
   }
 
   sharewith(person: string) {
-    this._af.database.object('/' + this.uid + "/shared_with/" + person).set('will');
-    this._af.database.object('/' + person + "/shares/" + this.uid).set('will');
+
+    let sub = this._userService.finduser(person).subscribe((value) => {
+      if (value && (value.length > 0)) {
+        let sharewith = value[0];
+        console.log(sharewith);
+
+        this._af.database.object('/' + this.uid + "/shared_with/" + sharewith.$key).set(sharewith.$value);
+        this._af.database.object('/' + sharewith.$key + "/shares/" + this.uid).set(this.profile.username);
+      }
+    });
+  }
+
+  revokeShare(personKey: string) {
+    this._af.database.object('/' + this.uid + "/shared_with/" + personKey).remove();
+    this._af.database.object('/' + personKey + "/shares/" + this.uid).remove();
   }
 
 }

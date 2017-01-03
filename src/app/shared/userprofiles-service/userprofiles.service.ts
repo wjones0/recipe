@@ -59,4 +59,14 @@ export class UserprofilesService {
     }
   }
 
+  finduser(username: string): Observable<any> {
+    const queryObservable = this._af.database.list('/users', {
+      query: {
+        orderByValue: true,
+        equalTo: username
+      }
+    });
+    return queryObservable;
+  }
+
 }

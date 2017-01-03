@@ -1,9 +1,6 @@
 <rec-topnav></rec-topnav>
 
 
-{{iSharedWith | async | json}} {{sharedWithMe | async | json}} {{auth | json}}
-
-
 <md-list>
     <div class="header" md-subheader>
         <h1>People that have shared with you</h1>
@@ -18,11 +15,11 @@
             </md-card-title>
             <md-card-subtitle>?? Recipes</md-card-subtitle>
         </md-card-title-group>
-        <md-card-footer *ngIf="showDelete">
+        <!--<md-card-footer *ngIf="showDelete">
             <button class="del-fab" md-mini-fab (click)="delete(r)">
             <md-icon>delete</md-icon>
         </button>
-        </md-card-footer>
+        </md-card-footer>-->
     </md-card>
 </div>
 
