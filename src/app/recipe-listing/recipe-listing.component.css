@@ -2,6 +2,8 @@
 .card-container {
   display: flex;
   flex-flow: row wrap;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .fab{

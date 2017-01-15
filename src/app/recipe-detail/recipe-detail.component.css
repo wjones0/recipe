@@ -44,6 +44,11 @@ md-card {
   margin: 16px;
 }
 
+.recipe-container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .step {
     font-size: 16px;
     display: flex;
