@@ -10,6 +10,9 @@ export class RecipeService {
     private uid: string;
     private authSub: Subscription;
 
+    public activeID: string;
+    public guest: boolean;
+
     private _authed = new BehaviorSubject<boolean>(false);
     public authed = this._authed.asObservable();
 
@@ -17,6 +20,8 @@ export class RecipeService {
         this.authSub = this._af.auth.subscribe((value) => {
             if (value) {
                 this.uid = value.uid;
+                this.activeID = this.uid;
+                this.guest = false;
                 this._authed.next(true);
             }
             else {
@@ -54,11 +59,17 @@ export class RecipeService {
     }
 
     getRecipes(): any {
-        return this._af.database.list('/' + this.uid + "/recipe-headers");
+        if (this.activeID == null)
+            this.activeID = this.uid;
+
+        return this._af.database.list('/' + this.activeID + "/recipe-headers");
     }
 
     getRecipe(id: string) {
-        return this._af.database.object('/' + this.uid + "/recipes/" + id).map(res => res);
+        if (this.activeID == null)
+            this.activeID = this.uid;
+
+        return this._af.database.object('/' + this.activeID + "/recipes/" + id).map(res => res);
     }
 
     updateRecipe(recipe) {

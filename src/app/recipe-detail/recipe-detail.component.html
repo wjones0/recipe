@@ -41,7 +41,7 @@
 
   </div>
 
-  <button md-fab class="fab" routerLink="/edit/{{recipeID}}">
+  <button md-fab class="fab" routerLink="/edit/{{recipeID}}" *ngIf="!_recipeService.guest">
     <md-icon>edit</md-icon>
 </button>
 

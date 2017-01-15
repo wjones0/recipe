@@ -8,7 +8,7 @@
 </md-list>
 
 <div class="card-container">
-    <md-card *ngFor="let r of sharedWithMe | async">
+    <md-card *ngFor="let r of sharedWithMe | async" (click)="viewShare(r)">
         <md-card-title-group (longpress)="showDelete = !showDelete">
             <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
             <md-card-title>{{r.$value}}
@@ -39,14 +39,14 @@
 
 <div class="card-container">
     <md-card *ngFor="let r of iSharedWith | async">
-        <md-card-title-group (longpress)="showDelete = !showDelete">
-            <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
+        <md-card-title-group (longpress)=" showDelete=! showDelete ">
+            <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg ">
             <md-card-title>{{r.$value}}
             </md-card-title>
             <md-card-subtitle>?? Recipes</md-card-subtitle>
         </md-card-title-group>
-        <md-card-footer *ngIf="showDelete">
-            <button class="del-fab" md-mini-fab (click)="delete(r)">
+        <md-card-footer *ngIf="showDelete ">
+            <button class="del-fab " md-mini-fab (click)="delete(r) ">
             <md-icon>delete</md-icon>
         </button>
         </md-card-footer>

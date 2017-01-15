@@ -28,6 +28,10 @@ describe('RecipeListingComponent', () => {
   let deletedsomething: string = '';
   let delSpy: jasmine.Spy;
 
+  let actrt = new ActivatedRouteStub();
+  actrt.testParams = {
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -44,7 +48,8 @@ describe('RecipeListingComponent', () => {
         { provide: UserprofilesService, useClass: UserProfileServiceMock },
         ThemeService,
         { provide: AngularFire, useClass: Firemocksvc },
-        { provide: Router, useClass: RouterStub }
+        { provide: Router, useClass: RouterStub },
+        { provide: ActivatedRoute, useValue: actrt },
       ]
     })
       .compileComponents();

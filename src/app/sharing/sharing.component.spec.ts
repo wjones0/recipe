@@ -7,10 +7,11 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { AngularFire } from 'angularfire2';
-
+import { Router } from '@angular/router';
 
 import { Firemocksvc } from '../shared/testing/firemock';
 import { click } from '../shared/testing/click';
+import { RouterStub } from '../shared/testing/routerstubs';
 import { ThemeService } from '../shared/theme-service/theme.service';
 import { SharingService } from '../shared/sharing-service/sharing.service';
 import { SharingServiceMock } from '../shared/sharing-service/sharing.service.mock';
@@ -36,6 +37,7 @@ describe('SharingComponent', () => {
       ],
       providers: [
         { provide: AngularFire, useClass: Firemocksvc },
+        { provide: Router, useClass: RouterStub },
         { provide: SharingService, useClass: SharingServiceMock },
         { provide: UserprofilesService, useClass: UserProfileServiceMock },
         ThemeService,

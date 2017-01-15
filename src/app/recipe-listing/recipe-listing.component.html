@@ -8,7 +8,7 @@
         <md-card-title>{{r.title}}
         </md-card-title>
       </md-card-title-group>
-      <md-card-footer *ngIf="showDelete">
+      <md-card-footer *ngIf="showDelete && !_recipeService.guest">
         <button class="del-fab" md-mini-fab (click)="delete(r)">
             <md-icon>delete</md-icon>
         </button>
@@ -16,7 +16,7 @@
     </md-card>
   </div>
 
-  <button md-fab class="fab" routerLink="/add">
+  <button md-fab class="fab" routerLink="/add" *ngIf="!_recipeService.guest">
     <md-icon>add</md-icon>
 </button>
 </div>
