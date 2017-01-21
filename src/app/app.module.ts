@@ -24,6 +24,7 @@ import { ThemeService } from './shared/theme-service/theme.service';
 import { SharingService } from './shared/sharing-service/sharing.service';
 import { UserprofilesService } from './shared/userprofiles-service/userprofiles.service';
 import { SettingsComponent } from './settings/settings.component';
+import { FooterComponent } from './footer/footer.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -48,7 +49,8 @@ const myFirebaseAuthConfig = {
         RecipeAddComponent,
         SharingComponent,
         ShareDialogComponent,
-        SettingsComponent
+        SettingsComponent,
+        FooterComponent
     ],
     entryComponents: [
         ShareDialogComponent

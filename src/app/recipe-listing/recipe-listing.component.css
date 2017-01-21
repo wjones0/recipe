@@ -6,6 +6,11 @@
   margin-right: 4%;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
 .fab{
     position: fixed;
     bottom: 25px;

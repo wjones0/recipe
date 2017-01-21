@@ -11,6 +11,7 @@ import 'hammerjs';
 
 import { RecipeListingComponent } from './recipe-listing.component';
 import { TopnavComponent } from '../topnav/topnav.component';
+import { FooterComponent } from '../footer/footer.component';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
 import { ThemeService } from '../shared/theme-service/theme.service';
@@ -41,6 +42,7 @@ describe('RecipeListingComponent', () => {
       declarations: [
         RecipeListingComponent,
         TopnavComponent,
+        FooterComponent,
         RouterLinkStubDirective
       ],
       providers: [

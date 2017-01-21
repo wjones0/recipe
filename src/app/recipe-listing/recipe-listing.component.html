@@ -1,4 +1,4 @@
-<div [ngClass]="{candytheme:theme==='candytheme',alletheme:theme==='alletheme'}">
+<div class="content">
   <rec-topnav></rec-topnav>
 
   <div class="card-container">
@@ -16,7 +16,10 @@
     </md-card>
   </div>
 
+
   <button md-fab class="fab" routerLink="/add" *ngIf="!_recipeService.guest">
     <md-icon>add</md-icon>
-</button>
+  </button>
+
+  <rec-footer></rec-footer>
 </div>

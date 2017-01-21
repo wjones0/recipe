@@ -20,6 +20,7 @@ import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofi
 
 import { SharingComponent } from './sharing.component';
 import { TopnavComponent } from '../topnav/topnav.component';
+import { FooterComponent } from '../footer/footer.component';
 
 describe('SharingComponent', () => {
   let component: SharingComponent;
@@ -33,7 +34,8 @@ describe('SharingComponent', () => {
       ],
       declarations: [
         SharingComponent,
-        TopnavComponent
+        TopnavComponent,
+        FooterComponent,
       ],
       providers: [
         { provide: AngularFire, useClass: Firemocksvc },
