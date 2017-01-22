@@ -62,7 +62,11 @@ export class RecipeService {
         if (this.activeID == null)
             this.activeID = this.uid;
 
-        return this._af.database.list('/' + this.activeID + "/recipe-headers");
+        return this._af.database.list('/' + this.activeID + "/recipe-headers", {
+            query: {
+                orderByChild: 'title',
+            }
+        });
     }
 
     getRecipe(id: string) {
