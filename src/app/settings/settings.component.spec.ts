@@ -19,6 +19,7 @@ import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofi
 
 import { SettingsComponent } from './settings.component';
 import { TopnavComponent } from '../topnav/topnav.component';
+import { FooterComponent } from '../footer/footer.component';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -32,7 +33,8 @@ describe('SettingsComponent', () => {
       ],
       declarations: [
         SettingsComponent,
-        TopnavComponent
+        TopnavComponent,
+        FooterComponent,
       ],
       providers: [
         { provide: AngularFire, useClass: Firemocksvc },
