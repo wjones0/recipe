@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
-import { ThemeService } from '../shared/theme-service/theme.service';
 import { RecipeService } from '../shared/recipe-service/recipe.service';
 
 @Component({
@@ -18,14 +17,11 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
     private checkingIngredients: boolean = false;
     private recipeID: string;
 
-    private recipe;
-
-    private theme: string;
-    private themeSub: Subscription;
+    public recipe;
 
     private stepsDone: boolean[];
 
-    constructor(private _route: ActivatedRoute, private _recipeService: RecipeService, private _themeService: ThemeService) { }
+    constructor(private _route: ActivatedRoute, public _recipeService: RecipeService) { }
 
     ngOnInit() {
         this.routeSub = this._route.params.subscribe(params => {
@@ -39,15 +35,10 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
                 }
             });
         });
-
-        this.themeSub = this._themeService.theme.subscribe((value) => {
-            this.theme = value;
-        });
     }
 
     ngOnDestroy() {
         this.routeSub.unsubscribe();
-        this.themeSub.unsubscribe();
     }
 
 }

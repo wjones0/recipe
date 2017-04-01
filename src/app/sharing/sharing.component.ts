@@ -13,8 +13,8 @@ import { SharingService } from '../shared/sharing-service/sharing.service';
 })
 export class SharingComponent implements OnInit {
 
-  private sharedWithMe: Observable<any>;
-  private iSharedWith: Observable<any>;
+  public sharedWithMe: Observable<any>;
+  public iSharedWith: Observable<any>;
 
   dialogRef: MdDialogRef<ShareDialogComponent>;
 

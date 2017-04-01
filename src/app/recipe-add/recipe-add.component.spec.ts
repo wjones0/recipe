@@ -1,12 +1,11 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { AngularFire } from 'angularfire2';
-import { DragulaModule } from 'ng2-dragula';
 import 'hammerjs';
 
 import { RecipeAddComponent } from './recipe-add.component';
@@ -38,7 +37,6 @@ describe('RecipeAddComponent', () => {
             imports: [
                 MaterialModule.forRoot(),
                 FormsModule,
-                DragulaModule
             ],
             declarations: [
                 RecipeAddComponent,
@@ -73,12 +71,12 @@ describe('RecipeAddComponent', () => {
     });
 
     it("should have places to enter main recipe things", () => {
-        let des = fixture.debugElement.queryAll(By.css('md-input'));
+        let des = fixture.debugElement.queryAll(By.css('input'));
 
-        expect(des[0].nativeElement.innerHTML).toContain("Recipe Title");
-        expect(des[1].nativeElement.innerHTML).toContain("Image");
-        expect(des[2].nativeElement.innerHTML).toContain("Yield");
-        expect(des[3].nativeElement.innerHTML).toContain("Time");
+        expect(des[0].nativeElement.placeholder).toContain("Recipe Title");
+        expect(des[1].nativeElement.placeholder).toContain("Image");
+        expect(des[2].nativeElement.placeholder).toContain("Yield");
+        expect(des[3].nativeElement.placeholder).toContain("Time");
 
     });
 
@@ -114,7 +112,9 @@ describe('RecipeAddComponent', () => {
 
     });
 
-    it("should have a save button that saves and routes to the new recipe", () => {
+    it("should have a save button that saves and routes to the new recipe", inject([Router], (router: Router) => {
+        const spy = spyOn(router, 'navigate');
+
         // add a step
         let de = fixture.debugElement.query(By.css('.add-step'));
         click(de.nativeElement);
@@ -129,15 +129,14 @@ describe('RecipeAddComponent', () => {
 
         // click the save
         de = fixture.debugElement.query(By.css('.save-btn'));
-        let route = de.injector.get(Router);
 
         fixture.detectChanges();
 
-        expect(route.navigatedTo).toBeNull;
 
         click(de.nativeElement);
         fixture.whenStable().then(() => {
-            expect(route.navigatedTo).toEqual(['/recipe/thenewkeyeyey']);
+            const navArgs = spy.calls.first().args[0];
+            expect(navArgs[0]).toBe('/recipe/thenewkeyeyey');
         });
-    });
+    }));
 });

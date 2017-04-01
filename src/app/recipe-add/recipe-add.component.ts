@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
-import { ThemeService } from '../shared/theme-service/theme.service';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
 
@@ -22,19 +21,12 @@ export class RecipeAddComponent implements OnInit {
         steps: []
     }
 
-    private theme: string;
-    private themeSub: Subscription;
-
-    constructor(private _recipeService: RecipeService, private _router: Router, private _themeService: ThemeService) { }
+    constructor(private _recipeService: RecipeService, private _router: Router) { }
 
     ngOnInit() {
-        this.themeSub = this._themeService.theme.subscribe((value) => {
-            this.theme = value;
-        });
     }
 
     ngOnDestroy() {
-        this.themeSub.unsubscribe();
     }
 
     customTrackBy(index: number, obj: any): any {

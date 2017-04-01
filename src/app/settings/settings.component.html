@@ -4,7 +4,9 @@
   <div class="userprofile" *ngIf="profile">
     <img class="profilepic" src="{{profile.picture}}">
     <div class="userdetails" *ngIf="!profile.profile || editing">
-      <md-input placeholder="Username" [(ngModel)]="username"></md-input>
+      <md-input-container>
+        <input mdInput placeholder="Username" [(ngModel)]="username">
+      </md-input-container>
       <div class="fill-remaining-space"></div>
       <button md-raised-button color="accent" (click)="save()">Save</button>
     </div>

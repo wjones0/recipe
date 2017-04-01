@@ -17,8 +17,8 @@
       <div class="ingredients" md-subheader>
         <h3>Ingredients</h3>
         <button md-mini-fab (click)="checkingIngredients = !checkingIngredients">
-      <md-icon>check</md-icon>
-    </button>
+          <md-icon>check</md-icon>
+        </button>
       </div>
       <md-list-item *ngFor="let i of recipe.ingredients">
         <md-checkbox *ngIf="checkingIngredients"></md-checkbox>

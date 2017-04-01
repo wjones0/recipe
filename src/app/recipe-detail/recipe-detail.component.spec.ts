@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { AngularFire } from 'angularfire2';
-import { DragulaModule } from 'ng2-dragula';
 import 'hammerjs';
 
 import { RecipeDetailComponent } from './recipe-detail.component';
@@ -36,7 +35,6 @@ describe('RecipeEditComponent', () => {
             imports: [
                 MaterialModule.forRoot(),
                 FormsModule,
-                DragulaModule
             ],
             declarations: [
                 RecipeDetailComponent,

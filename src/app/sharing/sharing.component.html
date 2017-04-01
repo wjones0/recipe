@@ -40,7 +40,7 @@
 <div class="card-container">
     <md-card *ngFor="let r of iSharedWith | async">
         <md-card-title-group (longpress)=" showDelete=! showDelete ">
-            <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg ">
+            <img md-card-sm-image src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg ">
             <md-card-title>{{r.$value}}
             </md-card-title>
             <md-card-subtitle>?? Recipes</md-card-subtitle>

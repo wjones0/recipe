@@ -51,14 +51,14 @@ describe('TopnavComponent', () => {
     it('should have a top menu with items on the username', () => {
         let de = fixture.debugElement.query(By.css('button'));
 
-        let menuItems = fixture.debugElement.queryAll(By.css('.md-menu-content>button'));
+        let menuItems = fixture.debugElement.queryAll(By.css('.mat-menu-content>button'));
 
         expect(menuItems.length).toBe(0);
 
         de.triggerEventHandler('click', null);
 
         fixture.whenStable().then(() => {
-            menuItems = fixture.debugElement.queryAll(By.css('.md-menu-content>button'));
+            menuItems = fixture.debugElement.queryAll(By.css('.mat-menu-content>button'));
 
             expect(menuItems.length).toBe(3);
 

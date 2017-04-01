@@ -4,22 +4,31 @@
 
 
   <div class="recipe-container">
-    <md-input placeholder="Recipe Title" [(ngModel)]="recipe.title"></md-input>
+    <md-input-container>
+      <input mdInput placeholder="Recipe Title" [(ngModel)]="recipe.title">
+    </md-input-container>
     <div class="spacer"></div>
 
-    <md-input placeholder="Image URL" [(ngModel)]="recipe.image"></md-input>
+    <md-input-container>
+      <input mdInput placeholder="Image URL" [(ngModel)]="recipe.image">
+    </md-input-container>
     <img src="{{recipe.image}}">
     <div class="spacer"></div>
 
-    <md-input placeholder="Yield" [(ngModel)]="recipe.yield"></md-input>
-    <md-input placeholder="Time" [(ngModel)]="recipe.time"></md-input>
+    <md-input-container>
+      <input mdInput placeholder="Yield" [(ngModel)]="recipe.yield">
+    </md-input-container>
+    <md-input-container>
+      <input mdInput placeholder="Time" [(ngModel)]="recipe.time">
+    </md-input-container>
     <div class="spacer"></div>
 
     <div class="section-header">
       <h3>Ingredients</h3>
     </div>
-    <md-input *ngFor="let ing of recipe.ingredients; let i=index; trackBy: customTrackBy" placeholder="Ingredient" [(ngModel)]="recipe.ingredients[i]"
-      (keyup.enter)="recipe.ingredients.push('')"></md-input>
+    <md-input-container *ngFor="let ing of recipe.ingredients; let i=index; trackBy: customTrackBy">
+      <input mdInput placeholder="Ingredient" [(ngModel)]="recipe.ingredients[i]" (keyup.enter)="recipe.ingredients.push('')">
+    </md-input-container>
     <button class="add-ing" md-mini-fab (click)="recipe.ingredients.push('')">
       <md-icon>add</md-icon>
     </button>
@@ -28,8 +37,9 @@
     <div class="section-header">
       <h3>Instructions</h3>
     </div>
-    <md-textarea *ngFor="let s of recipe.steps; let i=index; trackBy: customTrackBy" placeholder="Step" [(ngModel)]="recipe.steps[i]"
-      (keyup.enter)="recipe.steps.push('')"></md-textarea>
+    <md-input-container *ngFor="let s of recipe.steps; let i=index; trackBy: customTrackBy">
+      <textarea mdInput placeholder="Step" [(ngModel)]="recipe.steps[i]" (keyup.enter)="recipe.steps.push('')"></textarea>
+    </md-input-container>
     <button class="add-step" md-mini-fab (click)="recipe.steps.push('')">
       <md-icon>add</md-icon>
     </button>

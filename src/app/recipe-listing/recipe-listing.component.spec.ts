@@ -1,6 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import { } from 'jasmine';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -124,17 +124,18 @@ describe('RecipeListingComponent', () => {
     expect(deletedsomething).toBe('key2');
   });
 
-  it('should navigate to profile page if no profile is present', () => {
+  it('should navigate to profile page if no profile is present', inject([Router], (router: Router) => {
+    const spy = spyOn(router, 'navigate');
+
     let userservice = fixture.debugElement.injector.get(UserprofilesService);
-    let router = fixture.debugElement.injector.get(Router);
+    userservice.logout();
 
-    expect(router.navigatedTo).toBeNull();
-    userservice.deauth();
 
-    fixture.detectChanges();
-
-    expect(router.navigatedTo[0]).toBe('/settings');
-  });
+    fixture.whenStable().then(() => {
+      const navArgs = spy.calls.first().args[0];
+      expect(navArgs[0]).toBe('/settings');
+    });
+  }));
 
 });
 

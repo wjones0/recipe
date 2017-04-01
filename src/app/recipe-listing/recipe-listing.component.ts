@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
-import { ThemeService } from '../shared/theme-service/theme.service';
 import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 
 @Component({
@@ -15,15 +14,12 @@ import { UserprofilesService } from '../shared/userprofiles-service/userprofiles
 })
 export class RecipeListingComponent implements OnInit, OnDestroy {
 
-  private recipes: Observable<any>;
+  public recipes: Observable<any>;
   private authSub: Subscription;
-
-  private theme: string;
-  private themeSub: Subscription;
 
   private showDelete: boolean = false;
 
-  constructor(private _recipeService: RecipeService, private _userService: UserprofilesService, private _themeService: ThemeService, private _router: Router, private _route: ActivatedRoute) { }
+  constructor(public _recipeService: RecipeService, private _userService: UserprofilesService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
     this.authSub = this._userService.authed.subscribe((value) => {
@@ -47,15 +43,10 @@ export class RecipeListingComponent implements OnInit, OnDestroy {
         this._router.navigate(['/settings']);
       }
     });
-
-    this.themeSub = this._themeService.theme.subscribe((value) => {
-      this.theme = value;
-    });
   }
 
   ngOnDestroy() {
     this.authSub.unsubscribe();
-    this.themeSub.unsubscribe();
   }
 
   delete(recipe) {

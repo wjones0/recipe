@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -6,7 +7,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
 import { MaterialModule } from '@angular/material';
-import { DragulaModule } from 'ng2-dragula';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -20,7 +20,6 @@ import { SharingComponent } from './sharing/sharing.component';
 import { ShareDialogComponent } from './share-dialog/share-dialog.component';
 
 import { RecipeService } from './shared/recipe-service/recipe.service';
-import { ThemeService } from './shared/theme-service/theme.service';
 import { SharingService } from './shared/sharing-service/sharing.service';
 import { UserprofilesService } from './shared/userprofiles-service/userprofiles.service';
 import { SettingsComponent } from './settings/settings.component';
@@ -57,18 +56,17 @@ const myFirebaseAuthConfig = {
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
         MaterialModule.forRoot(),
-        DragulaModule
     ],
     providers: [
         RecipeService,
         SharingService,
         UserprofilesService,
-        ThemeService
     ],
     bootstrap: [AppComponent]
 })

@@ -21,7 +21,7 @@ export class UserProfileServiceMock {
         });
     }
 
-    deauth() {
+    logout() {
         this._authed.next({
             uid: this.uid,
             profile: false

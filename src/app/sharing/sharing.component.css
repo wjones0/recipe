@@ -8,9 +8,9 @@
 }
 
 .header {
-    padding-bottom: 56px;
+    padding-bottom: 56px !important;
     border-bottom: solid;
-    display: flex;
+    display: flex !important;
     flex-direction: row;
 }
 

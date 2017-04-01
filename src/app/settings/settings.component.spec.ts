@@ -69,17 +69,17 @@ describe('SettingsComponent', () => {
     click(de);
     fixture.detectChanges();
 
-    de = fixture.debugElement.query(By.css('md-input'));
+    de = fixture.debugElement.query(By.css('md-input-container'));
     expect(de).toBeTruthy();
   });
 
   it('should show an input box if the user has no username', () => {
     let usersvc = fixture.debugElement.injector.get(UserprofilesService);
 
-    usersvc.deauth();
+    usersvc.logout();
     fixture.detectChanges();
 
-    let de = fixture.debugElement.query(By.css('md-input'));
+    let de = fixture.debugElement.query(By.css('md-input-container'));
     expect(de).toBeTruthy();
   });
 });

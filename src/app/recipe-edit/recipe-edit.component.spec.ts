@@ -1,12 +1,11 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 import { AngularFire } from 'angularfire2';
-import { DragulaModule } from 'ng2-dragula';
 import 'hammerjs';
 
 import { RecipeEditComponent } from './recipe-edit.component';
@@ -39,7 +38,6 @@ describe('RecipeEditComponent', () => {
             imports: [
                 MaterialModule.forRoot(),
                 FormsModule,
-                DragulaModule
             ],
             declarations: [
                 RecipeEditComponent,
@@ -70,12 +68,12 @@ describe('RecipeEditComponent', () => {
     });
 
     it("should have places to enter main recipe things", () => {
-        let des = fixture.debugElement.queryAll(By.css('md-input'));
+        let des = fixture.debugElement.queryAll(By.css('input'));
 
-        expect(des[0].nativeElement.innerHTML).toContain("Recipe Title");
-        expect(des[1].nativeElement.innerHTML).toContain("Image");
-        expect(des[2].nativeElement.innerHTML).toContain("Yield");
-        expect(des[3].nativeElement.innerHTML).toContain("Time");
+        expect(des[0].nativeElement.placeholder).toContain("Recipe Title");
+        expect(des[1].nativeElement.placeholder).toContain("Image");
+        expect(des[2].nativeElement.placeholder).toContain("Yield");
+        expect(des[3].nativeElement.placeholder).toContain("Time");
 
     });
 
@@ -85,8 +83,8 @@ describe('RecipeEditComponent', () => {
         expect(el.innerHTML).toContain('Chicken Tortilla Soup');
         expect(el.innerHTML).toContain('1 onion, chopped');
         expect(el.innerHTML).toContain('1 teaspoon dried cumin');
-        expect(el.innerHTML).toContain('Saute onion and garlic');
-        expect(el.innerHTML).toContain('Ladle soup into individual serving bowls');
+        expect(el.innerHTML).toContain('In a medium stock pot');
+        expect(el.innerHTML).toContain('Ladle soup into individual');
         expect(el.innerHTML).toContain('1.5 hr');
         expect(el.innerHTML).toContain('1 pot');
     });
@@ -123,18 +121,19 @@ describe('RecipeEditComponent', () => {
 
     });
 
-    it("should have a save button that saves and routes to the new recipe", () => {
+    it("should have a save button that saves and routes to the new recipe", inject([Router], (router: Router) => {
+        const spy = spyOn(router, 'navigate');
+
         // click the save
         let de = fixture.debugElement.query(By.css('.save-btn'));
         let route = de.injector.get(Router);
 
         fixture.detectChanges();
 
-        expect(route.navigatedTo).toBeNull;
-
         click(de.nativeElement);
         fixture.whenStable().then(() => {
-            expect(route.navigatedTo).toEqual(['/recipe/somerandomkey']);
+            const navArgs = spy.calls.first().args[0];
+            expect(navArgs[0]).toBe('/recipe/somerandomkey');
         });
-    });
+    }));
 });
