@@ -14,8 +14,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
     private routeSub: Subscription;
 
-    private checkingIngredients: boolean = false;
-    private recipeID: string;
+    public checkingIngredients: boolean = false;
+    public recipeID: string;
 
     public recipe;
 

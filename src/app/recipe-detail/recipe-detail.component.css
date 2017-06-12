@@ -44,6 +44,14 @@ md-card {
   margin: 16px;
 }
 
+md-checkbox {
+    margin-right: 12px;
+}
+
+:host >>> .mat-list-item {
+    color: black;
+}
+
 .recipe-container {
     margin-left: 10%;
     margin-right: 10%;

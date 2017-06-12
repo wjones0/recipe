@@ -6,7 +6,17 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
-import { MaterialModule } from '@angular/material';
+import {
+    MdButtonModule,
+    MdCardModule,
+    MdCheckboxModule,
+    MdDialogModule,
+    MdIconModule,
+    MdInputModule,
+    MdListModule,
+    MdMenuModule,
+    MdToolbarModule
+} from '@angular/material';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -59,9 +69,17 @@ const myFirebaseAuthConfig = {
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
+        MdButtonModule,
+        MdCardModule,
+        MdCheckboxModule,
+        MdDialogModule,
+        MdIconModule,
+        MdInputModule,
+        MdListModule,
+        MdMenuModule,
+        MdToolbarModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
-        MaterialModule.forRoot(),
     ],
     providers: [
         RecipeService,
