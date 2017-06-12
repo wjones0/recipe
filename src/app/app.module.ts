@@ -5,7 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AngularFireModule, AuthMethods, AuthProviders } from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import {
     MdButtonModule,
     MdCardModule,
@@ -37,15 +40,12 @@ import { FooterComponent } from './footer/footer.component';
 
 // Must export the config
 export const firebaseConfig = {
-    apiKey: 'AIzaSyDujc6Q4UXh19oZgu9GnaO-v6yvlIiuUXM',
-    authDomain: 'recipes-5da71.firebaseapp.com',
-    databaseURL: 'https://recipes-5da71.firebaseio.com',
-    storageBucket: 'recipes-5da71.appspot.com'
-};
-
-const myFirebaseAuthConfig = {
-    provider: AuthProviders.Google,
-    method: AuthMethods.Redirect
+    apiKey: "AIzaSyDujc6Q4UXh19oZgu9GnaO-v6yvlIiuUXM",
+    authDomain: "recipes-5da71.firebaseapp.com",
+    databaseURL: "https://recipes-5da71.firebaseio.com",
+    projectId: "recipes-5da71",
+    storageBucket: "recipes-5da71.appspot.com",
+    messagingSenderId: "335803175021"
 };
 
 @NgModule({
@@ -79,7 +79,9 @@ const myFirebaseAuthConfig = {
         MdMenuModule,
         MdToolbarModule,
         AppRoutingModule,
-        AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
     ],
     providers: [
         RecipeService,

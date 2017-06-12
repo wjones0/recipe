@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { AngularFire } from 'angularfire2';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class UserprofilesService {
@@ -14,13 +17,13 @@ export class UserprofilesService {
   private _authed = new BehaviorSubject<any>(null);
   public authed = this._authed.asObservable();
 
-  constructor(private _af: AngularFire) {
-    this.authSub = this._af.auth.subscribe((value) => {
+  constructor(private _af: AngularFireAuth, private _db: AngularFireDatabase) {
+    this.authSub = this._af.authState.subscribe((value) => {
       if (value) {
         this.uid = value.uid;
-        this.picture = value.auth.photoURL;
+        this.picture = value.photoURL;
 
-        this._af.database.object('/users/' + this.uid).map(res => res).subscribe((value) => {
+        this._db.object('/users/' + this.uid).map(res => res).subscribe((value) => {
           if (value.$value) {
             this._authed.next({
               uid: this.uid,
@@ -45,22 +48,22 @@ export class UserprofilesService {
   }
 
   login() {
-    this._af.auth.login();
+    this._af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   logout() {
-    this._af.auth.logout();
+    this._af.auth.signOut();
   }
 
   saveProfile(profile: any) {
     // need to update other places too eventually
     if (profile.username) {
-      this._af.database.object('/users/' + this.uid).set(profile.username);
+      this._db.object('/users/' + this.uid).set(profile.username);
     }
   }
 
   finduser(username: string): Observable<any> {
-    const queryObservable = this._af.database.list('/users', {
+    const queryObservable = this._db.list('/users', {
       query: {
         orderByValue: true,
         equalTo: username
