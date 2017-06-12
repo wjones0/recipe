@@ -1,0 +1,13 @@
+{
+    "static.ignore": [
+        "^\/assets\/img\/icons\/.*$"
+    ],
+    "routing": {
+        "index": "/index.html",
+        "routes": {
+            "/": {
+                "match": "exact"
+            }
+        }
+    }
+}
