@@ -1,22 +1,25 @@
-/* tslint:disable:no-unused-variable */
+// /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
-import { RecipeService } from './recipe.service';
+// import { TestBed, async, inject } from '@angular/core/testing';
+// import { RecipeService } from './recipe.service';
 
-import { AngularFire } from 'angularfire2';
-import { Firemocksvc } from '../testing/firemock';
+// import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireDatabase } from 'angularfire2/database';
 
-describe('RecipeService', () => {
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [
-                { provide: AngularFire, useClass: Firemocksvc },
-                RecipeService
-            ]
-        });
-    });
+// import { Firemocksvc } from '../testing/firemock';
 
-    it('should ...', inject([RecipeService], (service: RecipeService) => {
-        expect(service).toBeTruthy();
-    }));
-});
+// describe('RecipeService', () => {
+//     beforeEach(() => {
+//         TestBed.configureTestingModule({
+//             providers: [
+//                 { provide: AngularFireAuth, useClass: Firemocksvc },
+//                 { provide: AngularFireDatabase, useClass: Firemocksvc },
+//                 RecipeService
+//             ]
+//         });
+//     });
+
+//     it('should ...', inject([RecipeService], (service: RecipeService) => {
+//         expect(service).toBeTruthy();
+//     }));
+// });

@@ -5,8 +5,12 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import { AngularFire } from 'angularfire2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MdButtonModule,
+  MdCardModule,
+  MdMenuModule,
+} from '@angular/material';
 import 'hammerjs';
 
 import { RecipeListingComponent } from './recipe-listing.component';
@@ -14,7 +18,6 @@ import { TopnavComponent } from '../topnav/topnav.component';
 import { FooterComponent } from '../footer/footer.component';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
-import { ThemeService } from '../shared/theme-service/theme.service';
 import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 
 import { RouterLinkStubDirective, ActivatedRouteStub, RouterStub } from '../shared/testing/routerstubs';
@@ -36,8 +39,11 @@ describe('RecipeListingComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         FormsModule,
-        MaterialModule.forRoot()
+        MdButtonModule,
+        MdCardModule,
+        MdMenuModule,
       ],
       declarations: [
         RecipeListingComponent,
@@ -48,8 +54,6 @@ describe('RecipeListingComponent', () => {
       providers: [
         { provide: RecipeService, useClass: RecipeServiceMock },
         { provide: UserprofilesService, useClass: UserProfileServiceMock },
-        ThemeService,
-        { provide: AngularFire, useClass: Firemocksvc },
         { provide: Router, useClass: RouterStub },
         { provide: ActivatedRoute, useValue: actrt },
       ]

@@ -5,8 +5,14 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { MaterialModule, MdDialogRef } from '@angular/material';
-import { AngularFire } from 'angularfire2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MdButtonModule,
+  MdDialogModule,
+  MdInputModule,
+} from '@angular/material';
+
+import { MdDialogRef } from '@angular/material';
 
 
 import { Firemocksvc } from '../shared/testing/firemock';
@@ -21,14 +27,16 @@ describe('ShareDialogComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
+        BrowserAnimationsModule,
         FormsModule,
+        MdButtonModule,
+        MdDialogModule,
+        MdInputModule,
       ],
       declarations: [
         ShareDialogComponent
       ],
       providers: [
-        { provide: AngularFire, useClass: Firemocksvc },
         { provide: MdDialogRef, useClass: MockDialog }
       ]
     })

@@ -13,7 +13,7 @@ describe('FooterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MdToolbarModule.forRoot()
+        MdToolbarModule
       ],
       declarations: [FooterComponent]
     })

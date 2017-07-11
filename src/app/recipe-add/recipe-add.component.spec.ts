@@ -4,8 +4,12 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import { AngularFire } from 'angularfire2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+    MdButtonModule,
+    MdInputModule,
+    MdMenuModule,
+} from '@angular/material';
 import 'hammerjs';
 
 import { RecipeAddComponent } from './recipe-add.component';
@@ -13,12 +17,12 @@ import { TopnavComponent } from '../topnav/topnav.component';
 import { FooterComponent } from '../footer/footer.component';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
-import { ThemeService } from '../shared/theme-service/theme.service';
 import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofiles.service.mock';
 
 import { RouterLinkStubDirective, ActivatedRouteStub, RouterStub } from '../shared/testing/routerstubs';
 import { Firemocksvc } from '../shared/testing/firemock';
+import { RecipeServiceMock } from '../shared/recipe-service/recipe.service.mock';
 import { click } from '../shared/testing/click';
 
 describe('RecipeAddComponent', () => {
@@ -35,8 +39,11 @@ describe('RecipeAddComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                MaterialModule.forRoot(),
+                BrowserAnimationsModule,
                 FormsModule,
+                MdButtonModule,
+                MdInputModule,
+                MdMenuModule,
             ],
             declarations: [
                 RecipeAddComponent,
@@ -45,9 +52,7 @@ describe('RecipeAddComponent', () => {
                 RouterLinkStubDirective,
             ],
             providers: [
-                RecipeService,
-                ThemeService,
-                { provide: AngularFire, useClass: Firemocksvc },
+                { provide: RecipeService, useClass: RecipeServiceMock },
                 { provide: ActivatedRoute, useValue: actrt },
                 { provide: Router, useClass: RouterStub },
                 { provide: UserprofilesService, useClass: UserProfileServiceMock },

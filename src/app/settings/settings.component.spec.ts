@@ -5,13 +5,16 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
-import { AngularFire } from 'angularfire2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MdInputModule,
+  MdMenuModule,
+} from '@angular/material';
+
 
 
 import { Firemocksvc } from '../shared/testing/firemock';
 import { click } from '../shared/testing/click';
-import { ThemeService } from '../shared/theme-service/theme.service';
 import { SharingService } from '../shared/sharing-service/sharing.service';
 import { SharingServiceMock } from '../shared/sharing-service/sharing.service.mock';
 import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
@@ -28,8 +31,10 @@ describe('SettingsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MaterialModule.forRoot(),
+        BrowserAnimationsModule,
         FormsModule,
+        MdInputModule,
+        MdMenuModule,
       ],
       declarations: [
         SettingsComponent,
@@ -37,10 +42,8 @@ describe('SettingsComponent', () => {
         FooterComponent,
       ],
       providers: [
-        { provide: AngularFire, useClass: Firemocksvc },
         { provide: SharingService, useClass: SharingServiceMock },
         { provide: UserprofilesService, useClass: UserProfileServiceMock },
-        ThemeService,
       ]
     })
       .compileComponents();

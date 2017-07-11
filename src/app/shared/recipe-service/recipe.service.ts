@@ -75,7 +75,7 @@ export class RecipeService {
         if (this.activeID == null)
             this.activeID = this.uid;
 
-        return this._db.object('/' + this.activeID + "/recipes/" + id).map(res => res);
+        return this._db.object('/' + this.activeID + "/recipes/" + id);
     }
 
     updateRecipe(recipe) {

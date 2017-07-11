@@ -3,10 +3,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+    MdMenuModule,
+} from '@angular/material';
+
 
 import { TopnavComponent } from './topnav.component';
-import { ThemeService } from '../shared/theme-service/theme.service';
 import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
 
 import { UserProfileServiceMock } from '../shared/userprofiles-service/userprofiles.service.mock';
@@ -19,13 +22,13 @@ describe('TopnavComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                MaterialModule.forRoot(),
+                BrowserAnimationsModule,
                 FormsModule,
+                MdMenuModule,
             ],
             declarations: [TopnavComponent],
             providers: [
                 { provide: UserprofilesService, useClass: UserProfileServiceMock },
-                ThemeService,
             ]
         })
             .compileComponents();

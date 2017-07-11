@@ -1,0 +1,29 @@
+version: 2
+jobs:
+   build:
+     working_directory: ~/recipe
+     docker:
+      - image: circleci/node:7.10-browsers
+     steps:
+      - checkout
+      - run: 
+          name: npm install
+          command: npm install
+          working_directory: ~/recipe
+      - run:
+          name: run tests
+          command: ./node_modules/.bin/ng test --single-run
+          working_directory: ~/recipe
+      - store_test_results:
+          path: ~/recipe/junit
+      - store_artifacts:
+          path: ~/recipe/junit
+      - run:
+          name: build
+          command: ./node_modules/.bin/ng build --prod
+          working_directory: ~/recipe
+      - deploy:
+          name: deploy to firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
+          working_directory: ~/recipe
+       

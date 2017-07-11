@@ -23,7 +23,7 @@ export class UserprofilesService {
         this.uid = value.uid;
         this.picture = value.photoURL;
 
-        this._db.object('/users/' + this.uid).map(res => res).subscribe((value) => {
+        this._db.object('/users/' + this.uid).subscribe((value) => {
           if (value.$value) {
             this._authed.next({
               uid: this.uid,
