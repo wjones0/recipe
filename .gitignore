@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+junit
 
 # dependencies
 /node_modules
