@@ -5,8 +5,8 @@
     "routing": {
         "index": "/index.html",
         "routes": {
-            "/": {
-                "match": "prefix"
+            "^/[^_]/.*$": {
+                "match": "regex"
             }
         }
     }
