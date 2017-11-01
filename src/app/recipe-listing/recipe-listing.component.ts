@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap';
+import { switchMap } from 'rxjs/operators';
 
 import { RecipeService } from '../shared/recipe-service/recipe.service';
 import { UserprofilesService } from '../shared/userprofiles-service/userprofiles.service';
@@ -25,7 +25,7 @@ export class RecipeListingComponent implements OnInit, OnDestroy {
     this.authSub = this._userService.authed.subscribe((value) => {
       // we have some sort of auth and a profile
       if (value && value.profile) {
-        this.recipes = this._route.params.switchMap((params: Params) => {
+        this.recipes = this._route.params.pipe(switchMap((params: Params) => {
           let selID = params['id'];
           if (selID) {
             this._recipeService.activeID = selID;
@@ -36,7 +36,7 @@ export class RecipeListingComponent implements OnInit, OnDestroy {
             this._recipeService.guest = false;
           }
           return this._recipeService.getRecipes();
-        });
+        }));
       }
       // we have auth but no profile
       else if (value) {
