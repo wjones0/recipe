@@ -14,12 +14,12 @@
     flex-direction: row;
 }
 
-md-card {
+mat-card {
   width: 300px;
   box-sizing: border-box;
   margin: 16px;
 }
 
-md-card-title-group {
+mat-card-title-group {
   cursor: pointer;
 }

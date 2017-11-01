@@ -6,9 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-    MdButtonModule,
-    MdInputModule,
-    MdMenuModule,
+    MatButtonModule,
+    MatInputModule,
+    MatMenuModule,
 } from '@angular/material';
 import 'hammerjs';
 
@@ -41,9 +41,9 @@ describe('RecipeEditComponent', () => {
             imports: [
                 BrowserAnimationsModule,
                 FormsModule,
-                MdButtonModule,
-                MdInputModule,
-                MdMenuModule,
+                MatButtonModule,
+                MatInputModule,
+                MatMenuModule,
             ],
             declarations: [
                 RecipeEditComponent,

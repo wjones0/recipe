@@ -7,12 +7,12 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MdButtonModule,
-  MdDialogModule,
-  MdInputModule,
+  MatButtonModule,
+  MatDialogModule,
+  MatInputModule,
 } from '@angular/material';
 
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 
 import { Firemocksvc } from '../shared/testing/firemock';
@@ -29,15 +29,15 @@ describe('ShareDialogComponent', () => {
       imports: [
         BrowserAnimationsModule,
         FormsModule,
-        MdButtonModule,
-        MdDialogModule,
-        MdInputModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatInputModule,
       ],
       declarations: [
         ShareDialogComponent
       ],
       providers: [
-        { provide: MdDialogRef, useClass: MockDialog }
+        { provide: MatDialogRef, useClass: MockDialog }
       ]
     })
       .compileComponents();

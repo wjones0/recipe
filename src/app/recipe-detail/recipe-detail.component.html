@@ -4,45 +4,45 @@
 
   <div class="recipe-container" *ngIf="recipe">
 
-    <md-card>
-      <md-card-title-group>
+    <mat-card>
+      <mat-card-title-group>
         <img *ngIf="recipe.image" class="card-image" src="{{recipe.image}}">
-        <md-card-title>{{recipe.title}}</md-card-title>
-        <md-card-subtitle>Yield: {{recipe.yield}}</md-card-subtitle>
-        <md-card-subtitle>Time: {{recipe.time}}</md-card-subtitle>
-      </md-card-title-group>
-    </md-card>
+        <mat-card-title>{{recipe.title}}</mat-card-title>
+        <mat-card-subtitle>Yield: {{recipe.yield}}</mat-card-subtitle>
+        <mat-card-subtitle>Time: {{recipe.time}}</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card>
 
-    <md-list>
-      <div class="ingredients" md-subheader>
+    <mat-list>
+      <div class="ingredients" matSubheader>
         <h3>Ingredients</h3>
-        <button md-mini-fab (click)="checkingIngredients = !checkingIngredients">
-          <md-icon>check</md-icon>
+        <button mat-mini-fab (click)="checkingIngredients = !checkingIngredients">
+          <mat-icon>check</mat-icon>
         </button>
       </div>
-      <md-list-item *ngFor="let i of recipe.ingredients">
-        <md-checkbox *ngIf="checkingIngredients"></md-checkbox>
+      <mat-list-item *ngFor="let i of recipe.ingredients">
+        <mat-checkbox *ngIf="checkingIngredients"></mat-checkbox>
         {{i}}
-      </md-list-item>
-    </md-list>
+      </mat-list-item>
+    </mat-list>
 
 
     <div class="instruction-container">
-      <md-list>
-        <div class="instructions" md-subheader>
+      <mat-list>
+        <div class="instructions" matSubheader>
           <h3>Instructions</h3>
         </div>
-      </md-list>
+      </mat-list>
       <div class="step" *ngFor="let s of recipe.steps; let i=index">
-        <button md-mini-fab class="step-number" (click)="stepsDone[i] = !stepsDone[i]">{{i+1}}</button>
+        <button mat-mini-fab class="step-number" (click)="stepsDone[i] = !stepsDone[i]">{{i+1}}</button>
         <p [ngClass]="{done:stepsDone[i]}">{{s}}</p>
       </div>
     </div>
 
   </div>
 
-  <button md-fab class="fab" routerLink="/edit/{{recipeID}}" *ngIf="!_recipeService.guest">
-    <md-icon>edit</md-icon>
+  <button mat-fab class="fab" routerLink="/edit/{{recipeID}}" *ngIf="!_recipeService.guest">
+    <mat-icon>edit</mat-icon>
 </button>
   <rec-footer></rec-footer>
 </div>

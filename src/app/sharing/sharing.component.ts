@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { ShareDialogComponent } from '../share-dialog/share-dialog.component';
 import { SharingService } from '../shared/sharing-service/sharing.service';
@@ -16,11 +16,11 @@ export class SharingComponent implements OnInit {
   public sharedWithMe: Observable<any>;
   public iSharedWith: Observable<any>;
 
-  dialogRef: MdDialogRef<ShareDialogComponent>;
+  dialogRef: MatDialogRef<ShareDialogComponent>;
 
   private showDelete: boolean = false;
 
-  constructor(private _sharing: SharingService, public dialog: MdDialog, private _router: Router) {
+  constructor(private _sharing: SharingService, public dialog: MatDialog, private _router: Router) {
     this.sharedWithMe = this._sharing.getSharedWithMe();
     this.iSharedWith = this._sharing.getISharedWith();
   }

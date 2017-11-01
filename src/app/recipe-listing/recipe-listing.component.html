@@ -2,23 +2,23 @@
   <rec-topnav></rec-topnav>
 
   <div class="card-container">
-    <md-card *ngFor="let r of recipes | async">
-      <md-card-title-group routerLink="/recipe/{{r.childKey}}" (longpress)="showDelete = !showDelete">
-        <img *ngIf="r.image" md-card-sm-image src="{{r.image}}">
-        <md-card-title>{{r.title}}
-        </md-card-title>
-      </md-card-title-group>
-      <md-card-footer *ngIf="showDelete && !_recipeService.guest">
-        <button class="del-fab" md-mini-fab (click)="delete(r)">
-            <md-icon>delete</md-icon>
+    <mat-card *ngFor="let r of recipes | async">
+      <mat-card-title-group routerLink="/recipe/{{r.childKey}}" (longpress)="showDelete = !showDelete">
+        <img *ngIf="r.image" mat-card-sm-image src="{{r.image}}">
+        <mat-card-title>{{r.title}}
+        </mat-card-title>
+      </mat-card-title-group>
+      <mat-card-footer *ngIf="showDelete && !_recipeService.guest">
+        <button class="del-fab" mat-mini-fab (click)="delete(r)">
+            <mat-icon>delete</mat-icon>
         </button>
-      </md-card-footer>
-    </md-card>
+      </mat-card-footer>
+    </mat-card>
   </div>
 
 
-  <button md-fab class="fab" routerLink="/add" *ngIf="!_recipeService.guest">
-    <md-icon>add</md-icon>
+  <button mat-fab class="fab" routerLink="/add" *ngIf="!_recipeService.guest">
+    <mat-icon>add</mat-icon>
   </button>
 
   <rec-footer></rec-footer>

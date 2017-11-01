@@ -1,55 +1,55 @@
 <rec-topnav></rec-topnav>
 
 
-<md-list>
-    <div class="header" md-subheader>
+<mat-list>
+    <div class="header" matSubheader>
         <h1>People that have shared with you</h1>
     </div>
-</md-list>
+</mat-list>
 
 <div class="card-container">
-    <md-card *ngFor="let r of sharedWithMe | async" (click)="viewShare(r)">
-        <md-card-title-group (longpress)="showDelete = !showDelete">
-            <img md-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
-            <md-card-title>{{r.$value}}
-            </md-card-title>
-            <md-card-subtitle>?? Recipes</md-card-subtitle>
-        </md-card-title-group>
-        <!--<md-card-footer *ngIf="showDelete">
-            <button class="del-fab" md-mini-fab (click)="delete(r)">
-            <md-icon>delete</md-icon>
+    <mat-card *ngFor="let r of sharedWithMe | async" (click)="viewShare(r)">
+        <mat-card-title-group (longpress)="showDelete = !showDelete">
+            <img mat-card-avatar src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg">
+            <mat-card-title>{{r.$value}}
+            </mat-card-title>
+            <mat-card-subtitle>?? Recipes</mat-card-subtitle>
+        </mat-card-title-group>
+        <!--<mat-card-footer *ngIf="showDelete">
+            <button class="del-fab" mat-mini-fab (click)="delete(r)">
+            <mat-icon>delete</mat-icon>
         </button>
-        </md-card-footer>-->
-    </md-card>
+        </mat-card-footer>-->
+    </mat-card>
 </div>
 
 
 
-<md-list>
-    <div class="header" md-subheader>
+<mat-list>
+    <div class="header" matSubheader>
         <h1>
             People you have shared with
         </h1>
         <div class="fill-remaining-space"></div>
-        <button md-mini-fab (click)="openDialog()">
-            <md-icon>share</md-icon>
+        <button mat-mini-fab (click)="openDialog()">
+            <mat-icon>share</mat-icon>
         </button>
     </div>
-</md-list>
+</mat-list>
 
 <div class="card-container">
-    <md-card *ngFor="let r of iSharedWith | async">
-        <md-card-title-group (longpress)=" showDelete=! showDelete ">
-            <img md-card-sm-image src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg ">
-            <md-card-title>{{r.$value}}
-            </md-card-title>
-            <md-card-subtitle>?? Recipes</md-card-subtitle>
-        </md-card-title-group>
-        <md-card-footer *ngIf="showDelete ">
-            <button class="del-fab " md-mini-fab (click)="delete(r) ">
-            <md-icon>delete</md-icon>
+    <mat-card *ngFor="let r of iSharedWith | async">
+        <mat-card-title-group (longpress)=" showDelete=! showDelete ">
+            <img mat-card-sm-image src="https://lh3.googleusercontent.com/-A7xisT-r67s/AAAAAAAAAAI/AAAAAAAAB-g/eQcqLU29-6I/photo.jpg ">
+            <mat-card-title>{{r.$value}}
+            </mat-card-title>
+            <mat-card-subtitle>?? Recipes</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-footer *ngIf="showDelete ">
+            <button class="del-fab " mat-mini-fab (click)="delete(r) ">
+            <mat-icon>delete</mat-icon>
         </button>
-        </md-card-footer>
-    </md-card>
+        </mat-card-footer>
+    </mat-card>
 </div>
 <rec-footer></rec-footer>

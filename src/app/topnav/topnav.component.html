@@ -1,27 +1,27 @@
-<md-toolbar color="primary">
+<mat-toolbar color="primary">
   <span routerLink="/" class="link">Recipes</span>
 
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
 
-  <button md-raised-button color="accent" *ngIf="!auth" (click)="login()">Login</button>
-  <button md-raised-button color="accent" *ngIf="auth && auth.profile" [mdMenuTriggerFor]="appMenu">
+  <button mat-raised-button color="accent" *ngIf="!auth" (click)="login()">Login</button>
+  <button mat-raised-button color="accent" *ngIf="auth && auth.profile" [matMenuTriggerFor]="appMenu">
       {{auth.username}}
-      <md-icon>arrow_drop_down</md-icon>
+      <mat-icon>arrow_drop_down</mat-icon>
     </button>
 
-  <md-menu #appMenu="mdMenu">
-    <button md-menu-item routerLink="/settings">
-        <md-icon>settings</md-icon>
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item routerLink="/settings">
+        <mat-icon>settings</mat-icon>
         Settings 
       </button>
-    <button md-menu-item routerLink="/sharing">
-        <md-icon>share</md-icon> 
+    <button mat-menu-item routerLink="/sharing">
+        <mat-icon>share</mat-icon> 
         Sharing Center 
       </button>
-    <button md-menu-item color="accent" (click)="logout()">
-        <md-icon>power_settings_new</md-icon>
+    <button mat-menu-item color="accent" (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
         Logout
       </button>
-  </md-menu>
-</md-toolbar>
+  </mat-menu>
+</mat-toolbar>

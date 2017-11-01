@@ -4,23 +4,23 @@
 
 
     <div class="recipe-container" *ngIf="recipe">
-        <md-input-container>
-            <input mdInput placeholder="Recipe Title" [(ngModel)]="recipe.title">
-        </md-input-container>
+        <mat-form-field>
+            <input matInput placeholder="Recipe Title" [(ngModel)]="recipe.title">
+        </mat-form-field>
         <div class="spacer"></div>
 
-        <md-input-container>
-            <input mdInput placeholder="Image URL" [(ngModel)]="recipe.image">
-        </md-input-container>
+        <mat-form-field>
+            <input matInput placeholder="Image URL" [(ngModel)]="recipe.image">
+        </mat-form-field>
         <img src="{{recipe.image}}">
         <div class="spacer"></div>
 
-        <md-input-container>
-            <input mdInput placeholder="Yield" [(ngModel)]="recipe.yield">
-        </md-input-container>
-        <md-input-container>
-            <input mdInput placeholder="Time" [(ngModel)]="recipe.time">
-        </md-input-container>
+        <mat-form-field>
+            <input matInput placeholder="Yield" [(ngModel)]="recipe.yield">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Time" [(ngModel)]="recipe.time">
+        </mat-form-field>
         <div class="spacer"></div>
 
         <div class="section-header">
@@ -28,29 +28,29 @@
         </div>
 
         <div class="ingredient-container">
-            <md-input-container *ngFor="let ing of recipe.ingredients; let i=index; trackBy: customTrackBy">
-                <input mdInput placeholder="Ingredient" [(ngModel)]="recipe.ingredients[i]">
-            </md-input-container>
+            <mat-form-field *ngFor="let ing of recipe.ingredients; let i=index; trackBy: customTrackBy">
+                <input matInput placeholder="Ingredient" [(ngModel)]="recipe.ingredients[i]">
+            </mat-form-field>
         </div>
-        <button md-mini-fab class="add-ing" (click)="recipe.ingredients.push('')">
-            <md-icon>add</md-icon>
+        <button mat-mini-fab class="add-ing" (click)="recipe.ingredients.push('')">
+            <mat-icon>add</mat-icon>
         </button>
         <div class="spacer"></div>
 
         <div class="section-header">
             <h3>Instructions</h3>
         </div>
-        <md-input-container *ngFor="let s of recipe.steps; let i=index; trackBy: customTrackBy">
-            <textarea mdInput placeholder="Step" [(ngModel)]="recipe.steps[i]"></textarea>
-        </md-input-container>
-        <button md-mini-fab class="add-step" (click)="recipe.steps.push('')">
-            <md-icon>add</md-icon>
+        <mat-form-field *ngFor="let s of recipe.steps; let i=index; trackBy: customTrackBy">
+            <textarea matInput placeholder="Step" [(ngModel)]="recipe.steps[i]"></textarea>
+        </mat-form-field>
+        <button mat-mini-fab class="add-step" (click)="recipe.steps.push('')">
+            <mat-icon>add</mat-icon>
         </button>
         <div class="spacer"></div>
 
         <div class="btn-group">
-            <button class="cancel-btn" md-raised-button color="accent" routerLink="/recipe/{{recipeID}}">Cancel</button>
-            <button class="save-btn" md-raised-button color="accent" (click)="save()">Save</button>
+            <button class="cancel-btn" mat-raised-button color="accent" routerLink="/recipe/{{recipeID}}">Cancel</button>
+            <button class="save-btn" mat-raised-button color="accent" (click)="save()">Save</button>
         </div>
     </div>
     <rec-footer></rec-footer>

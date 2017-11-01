@@ -10,15 +10,15 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import {
-    MdButtonModule,
-    MdCardModule,
-    MdCheckboxModule,
-    MdDialogModule,
-    MdIconModule,
-    MdInputModule,
-    MdListModule,
-    MdMenuModule,
-    MdToolbarModule
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatToolbarModule
 } from '@angular/material';
 import 'hammerjs';
 
@@ -69,15 +69,15 @@ export const firebaseConfig = {
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
-        MdButtonModule,
-        MdCardModule,
-        MdCheckboxModule,
-        MdDialogModule,
-        MdIconModule,
-        MdInputModule,
-        MdListModule,
-        MdMenuModule,
-        MdToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatToolbarModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-share-dialog',
@@ -8,7 +8,7 @@ import { MdDialogRef } from '@angular/material';
 })
 export class ShareDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MdDialogRef<ShareDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<ShareDialogComponent>) { }
 
   ngOnInit() {
   }

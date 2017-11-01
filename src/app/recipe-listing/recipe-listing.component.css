@@ -17,12 +17,12 @@
     right: 25px;
 }
 
-md-card {
+mat-card {
   width: 400px;
   box-sizing: border-box;
   margin: 16px;
 }
 
-md-card-title-group {
+mat-card-title-group {
   cursor: pointer;
 }

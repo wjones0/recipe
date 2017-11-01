@@ -39,12 +39,12 @@
     border-bottom: solid;
 }
 
-md-card {
+mat-card {
   box-sizing: border-box;
   margin: 16px;
 }
 
-md-checkbox {
+mat-checkbox {
     margin-right: 12px;
 }
 

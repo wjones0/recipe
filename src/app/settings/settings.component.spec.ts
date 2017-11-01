@@ -7,8 +7,8 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MdInputModule,
-  MdMenuModule,
+  MatInputModule,
+  MatMenuModule,
 } from '@angular/material';
 
 
@@ -33,8 +33,8 @@ describe('SettingsComponent', () => {
       imports: [
         BrowserAnimationsModule,
         FormsModule,
-        MdInputModule,
-        MdMenuModule,
+        MatInputModule,
+        MatMenuModule,
       ],
       declarations: [
         SettingsComponent,
@@ -72,7 +72,7 @@ describe('SettingsComponent', () => {
     click(de);
     fixture.detectChanges();
 
-    de = fixture.debugElement.query(By.css('md-input-container'));
+    de = fixture.debugElement.query(By.css('mat-form-field'));
     expect(de).toBeTruthy();
   });
 
@@ -82,7 +82,7 @@ describe('SettingsComponent', () => {
     usersvc.logout();
     fixture.detectChanges();
 
-    let de = fixture.debugElement.query(By.css('md-input-container'));
+    let de = fixture.debugElement.query(By.css('mat-form-field'));
     expect(de).toBeTruthy();
   });
 });

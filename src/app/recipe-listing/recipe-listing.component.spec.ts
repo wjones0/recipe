@@ -7,9 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MdButtonModule,
-  MdCardModule,
-  MdMenuModule,
+  MatButtonModule,
+  MatCardModule,
+  MatMenuModule,
 } from '@angular/material';
 import 'hammerjs';
 
@@ -41,9 +41,9 @@ describe('RecipeListingComponent', () => {
       imports: [
         BrowserAnimationsModule,
         FormsModule,
-        MdButtonModule,
-        MdCardModule,
-        MdMenuModule,
+        MatButtonModule,
+        MatCardModule,
+        MatMenuModule,
       ],
       declarations: [
         RecipeListingComponent,
@@ -79,7 +79,7 @@ describe('RecipeListingComponent', () => {
 
   it('should list the recipes when authed', () => {
     fixture.whenStable().then(() => {
-      let des = fixture.debugElement.queryAll(By.css('md-card-title'));
+      let des = fixture.debugElement.queryAll(By.css('mat-card-title'));
 
       expect(des[0].nativeElement.textContent).toContain('Chicken Tortilla Soup');
       expect(des[1].nativeElement.textContent).toContain('Chili');
@@ -88,7 +88,7 @@ describe('RecipeListingComponent', () => {
   });
 
   it('should navigate to the recipe when clicked', () => {
-    let des = fixture.debugElement.queryAll(By.css('md-card-title-group'));
+    let des = fixture.debugElement.queryAll(By.css('mat-card-title-group'));
 
     let rlinksvc = des[1].injector.get(RouterLinkStubDirective);
     expect(rlinksvc.navigatedTo).toBeNull;
@@ -105,7 +105,7 @@ describe('RecipeListingComponent', () => {
 
     expect(des.length).toBe(0);
 
-    des = fixture.debugElement.queryAll(By.css('md-card-title-group'));
+    des = fixture.debugElement.queryAll(By.css('mat-card-title-group'));
     des[0].triggerEventHandler('longpress', null);
 
     fixture.detectChanges();
@@ -117,7 +117,7 @@ describe('RecipeListingComponent', () => {
   });
 
   it('should have a delete function', () => {
-    let des = fixture.debugElement.queryAll(By.css('md-card-title-group'));
+    let des = fixture.debugElement.queryAll(By.css('mat-card-title-group'));
     des[0].triggerEventHandler('longpress', null);
 
     fixture.detectChanges();

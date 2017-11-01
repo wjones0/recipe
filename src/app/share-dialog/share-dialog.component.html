@@ -1,10 +1,10 @@
 <h1>Share with whom?</h1>
 
-<md-input-container>
-  <input mdInput placeholder="who?" #input (keyup.enter)="dialogRef.close(input.value)">
-</md-input-container>
+<mat-form-field>
+  <input matInput placeholder="who?" #input (keyup.enter)="dialogRef.close(input.value)">
+</mat-form-field>
 
-<md-dialog-actions>
-  <button md-raised-button (click)="dialogRef.close(input.value)">Share</button>
-  <button md-raised-button md-dialog-close>Cancel</button>
-</md-dialog-actions>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="dialogRef.close(input.value)">Share</button>
+  <button mat-raised-button matDialogClose>Cancel</button>
+</mat-dialog-actions>
