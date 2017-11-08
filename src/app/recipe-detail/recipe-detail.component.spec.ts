@@ -7,8 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
     MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatIconModule,
     MatInputModule,
+    MatListModule,
     MatMenuModule,
+    MatToolbarModule,
 } from '@angular/material';
 import 'hammerjs';
 
@@ -39,8 +44,13 @@ describe('RecipeEditComponent', () => {
                 BrowserAnimationsModule,
                 FormsModule,
                 MatButtonModule,
+                MatCardModule,
+                MatCheckboxModule,
+                MatIconModule,
                 MatInputModule,
+                MatListModule,
                 MatMenuModule,
+                MatToolbarModule,
             ],
             declarations: [
                 RecipeDetailComponent,

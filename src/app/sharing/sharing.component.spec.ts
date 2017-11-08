@@ -7,9 +7,12 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MatCardModule,
   MatDialogModule,
+  MatIconModule,
   MatListModule,
   MatMenuModule,
+  MatToolbarModule,
 } from '@angular/material';
 
 import { Router } from '@angular/router';
@@ -35,9 +38,12 @@ describe('SharingComponent', () => {
       imports: [
         BrowserAnimationsModule,
         FormsModule,
+        MatCardModule,
         MatDialogModule,
+        MatIconModule,
         MatListModule,
         MatMenuModule,
+        MatToolbarModule,
       ],
       declarations: [
         SharingComponent,

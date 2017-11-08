@@ -7,8 +7,10 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MatIconModule,
   MatInputModule,
   MatMenuModule,
+  MatToolbarModule,
 } from '@angular/material';
 
 
@@ -33,8 +35,10 @@ describe('SettingsComponent', () => {
       imports: [
         BrowserAnimationsModule,
         FormsModule,
+        MatIconModule,
         MatInputModule,
         MatMenuModule,
+        MatToolbarModule,
       ],
       declarations: [
         SettingsComponent,

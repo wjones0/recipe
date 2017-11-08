@@ -5,7 +5,9 @@ import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+    MatIconModule,
     MatMenuModule,
+    MatToolbarModule,
 } from '@angular/material';
 
 
@@ -24,7 +26,9 @@ describe('TopnavComponent', () => {
             imports: [
                 BrowserAnimationsModule,
                 FormsModule,
+                MatIconModule,
                 MatMenuModule,
+                MatToolbarModule,
             ],
             declarations: [TopnavComponent],
             providers: [

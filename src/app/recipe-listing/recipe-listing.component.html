@@ -2,15 +2,15 @@
   <rec-topnav></rec-topnav>
 
   <div class="card-container">
-    <mat-card *ngFor="let r of recipes | async">
-      <mat-card-title-group routerLink="/recipe/{{r.childKey}}" (longpress)="showDelete = !showDelete">
+    <mat-card *ngFor="let r of recipes | async" routerLink="/recipe/{{r.childKey}}">
+      <mat-card-title-group>
         <img *ngIf="r.image" mat-card-sm-image src="{{r.image}}">
         <mat-card-title>{{r.title}}
         </mat-card-title>
       </mat-card-title-group>
       <mat-card-footer *ngIf="showDelete && !_recipeService.guest">
         <button class="del-fab" mat-mini-fab (click)="delete(r)">
-            <mat-icon>delete</mat-icon>
+          <mat-icon>delete</mat-icon>
         </button>
       </mat-card-footer>
     </mat-card>

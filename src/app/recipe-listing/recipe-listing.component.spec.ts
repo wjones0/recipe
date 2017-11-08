@@ -9,7 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCardModule,
+  MatIconModule,
   MatMenuModule,
+  MatToolbarModule,
 } from '@angular/material';
 import 'hammerjs';
 
@@ -43,7 +45,9 @@ describe('RecipeListingComponent', () => {
         FormsModule,
         MatButtonModule,
         MatCardModule,
+        MatIconModule,
         MatMenuModule,
+        MatToolbarModule,
       ],
       declarations: [
         RecipeListingComponent,
