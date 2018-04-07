@@ -24,7 +24,7 @@ jobs:
           working_directory: ~/recipe
       - run:
           name: typescript install?
-          command: npm install -g typescript
+          command: sudo npm install -g typescript
       - run:
           name: function npm install
           command: npm install
