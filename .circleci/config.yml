@@ -28,8 +28,8 @@ jobs:
           working_directory: ~/recipe/functions
       - run:
           name: build function
-          command: ./node_modules/.bin/tsc
-          working_directory: ~/recipe/functions
+          command: npm --prefix functions run build
+          working_directory: ~/recipe
       - deploy:
           name: deploy to firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive
