@@ -23,6 +23,9 @@ jobs:
           command: ./node_modules/.bin/ng build --prod
           working_directory: ~/recipe
       - run:
+          name: typescript install?
+          command: npm install -g typescript
+      - run:
           name: function npm install
           command: npm install
           working_directory: ~/recipe/functions
