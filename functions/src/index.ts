@@ -5,7 +5,7 @@ import { DialogflowApp } from 'actions-on-google';
 // // https://firebase.google.com/docs/functions/typescript
 //
 export const helloWorld = functions.https.onRequest((request, response) => {
-    console.log(request);
+    console.log(JSON.stringify(request));
     let dialogApp = new DialogflowApp({ request, response });
 
     function ingredientList(app: DialogflowApp) {
